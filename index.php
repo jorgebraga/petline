@@ -8,7 +8,11 @@ $app->config('debug', true);
 
 $app->get('/', function() {
     
-	echo "OK";
+	$sql = new petline\DB\Sql();
+
+	$result = $sql -> select("SELECT * FROM cliente");
+
+	echo json_encode($result);
 
 });
 

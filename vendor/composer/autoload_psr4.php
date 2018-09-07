@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '' => array($vendorDir . '/petline/php-classes/src'),
+    'petline\\' => array($vendorDir . '/petline/php-classes/src'),
 );

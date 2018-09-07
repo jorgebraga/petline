@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit12fa02454d88537b88fbf93fb830b878
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/petline/php-classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'petline\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'petline\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/petline/php-classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -41,7 +51,8 @@ class ComposerStaticInit12fa02454d88537b88fbf93fb830b878
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit12fa02454d88537b88fbf93fb830b878::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit12fa02454d88537b88fbf93fb830b878::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit12fa02454d88537b88fbf93fb830b878::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit12fa02454d88537b88fbf93fb830b878::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit12fa02454d88537b88fbf93fb830b878::$classMap;
 
