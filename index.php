@@ -1,22 +1,12 @@
-<?php 
+<?php
+include "cabecalho.php";
+?>
 
-require_once("vendor/autoload.php");
+    <div class="container">
+        <form action=""></form>
+        <button type="button" class="btn btn-primary">Primary</button>
+    </div>
 
-use \Slim\Slim;
-use \petline\Page;
-
-$app = new Slim();
-
-$app->config('debug', true);
-
-$app->get('/', function() {
-
-	$page = new Page();
-
-	$page -> setTpl("index");
-
-});
-
-$app->run();
-
- ?>
+<?php
+include "rodape.php";
+?>
