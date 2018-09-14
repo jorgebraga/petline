@@ -13,26 +13,35 @@
 <?php
     include "conexao.php";
 ?>
-    <form action="processa_login.php" method="POST">
+<form action="processa_login.php" method="POST">
 
-    <div class="container" align="center">
+    <div style='margin-top: 10%'>
+        <div class="container" align="center">
+            Digite os dados de acesso:
+                <div class="form-group">
+                    <label for="login">Login:</label>
+                    <input type="text" style="width:30%;" class="form-control" name="login">
+                </div>
 
-        Digite os dados de acesso:
-        <table cellpadding=5>
-        <tr>
-            <td><b>Login:</b></td>
-            <td><input type="text" name="login" class="form-control"></td>    
-            <tr>
-            <tr>
-            <td><b>Senha:</b></td>
-            <td><input type="password" name="pass" class="form-control"></td>    
-        </tr>
-        <tr>
-            <td colspan='2' align='right'>
-                <input type="submit" class="btn btn-primary"></button>
-            </td>
-        </tr>
-        </table>
-        <p>Não possui login?<a href="cadastro_usuario.php"> Clique Aqui</a></p>
+                <div class="form-group">
+                    <label for="pass">Senha:</label>
+                    <input type="password" style="width:30%;" class="form-control" name="pass">
+                </div>
+
+                <div class="form-group">
+                    <label for="perfil">Perfil:</label>
+                    
+                    <select name="perfil" id="perfil">
+                        <option value="cli">Cliente</option>
+                        <option value="pas">Passeador</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"> Entrar</button>
+                </div>
+            <p>Não possui login?<a href="cadastro_usuario.php?cod"> Clique Aqui</a></p>
+        </div>
     </div>
-    </form>
+
+</form>

@@ -2,12 +2,12 @@
 
 session_start();
 
-if (isset($_SESSION['login']) and isset($_SESSION['pass'])) {
+if (isset($_SESSION['login']) and isset($_SESSION['perfil'])) {
 
     $login = $_SESSION['login'];
-    $pass = $_SESSION['pass'];
+    $perfil = $_SESSION['perfil'];
 
-    $sqlValidaLogin = "SELECT login, senha FROM cliente WHERE login = '$login' and senha = '$pass'";
+    $sqlValidaLogin = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil'";
     $resultadoValidaLogin = mysqli_query($conn,$sqlValidaLogin);
     $contadorValidaLogin = mysqli_num_rows($resultadoValidaLogin);
 

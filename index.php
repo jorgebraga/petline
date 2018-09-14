@@ -2,10 +2,7 @@
 include "cabecalho.php";
 ?>
 
-    <div class="container">
-        <form action=""></form>
-        <button type="button" class="btn btn-primary">Primary</button>
-    </div>
+    <h1>Bem Vindo a Petline!</h1>
 
 <?php
 include "rodape.php";
