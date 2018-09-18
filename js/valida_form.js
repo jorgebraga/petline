@@ -25,6 +25,16 @@ $ (document).ready(function(){
             $("#email").focus();
             cont++;
             return false;
+        }else{
+            var email = $('input[name=email]').val();
+            if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
+                // valid email
+              } else {
+                alert("Formato de email invalido");
+                $("#email").focus();
+                cont++;
+                return false;
+            }
         }
 
         if ($("#dt_nascimento").val() == "") {
@@ -59,26 +69,10 @@ $ (document).ready(function(){
             return false;
         }
 
-        if ($("#pais").val() == "0") {
+        if ($("#cep").val() == "") {
     
-            alert("É necessario selecionar o pais");
-            $("#pais").focus();
-            cont++;
-            return false;
-        }
-
-        if ($("#uf").val() == "0") {
-    
-            alert("É necessario selecionar uma UF");
-            $("#uf").focus();
-            cont++;
-            return false;
-        }
-
-        if ($("#cidade").val() == "") {
-    
-            alert("É necessario preencher a cidade");
-            $("#cidade").focus();
+            alert("É necessario preencher o CEP");
+            $("#cep").focus();
             cont++;
             return false;
         }

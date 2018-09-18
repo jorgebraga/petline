@@ -24,33 +24,43 @@ if ($perfilCliente == 1) {
 
 session_start();
 
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
+$nome = utf8_decode($_POST['nome']);
+$sobrenome = utf8_decode($_POST['sobrenome']);
 $email = $_POST['email'];
 $dt_nascimento = $_POST['dt_nascimento'];
 $telefone = $_POST['telefone'];
 $rg = $_POST['rg'];
 $cpf = $_POST['cpf'];
 $cep = $_POST['cep'];
-$rua = $_POST['rua'];
-$bairro = $_POST['bairro'];
-$cidade = $_POST['cidade'];
+$rua = utf8_decode($_POST['rua']);
+$bairro = utf8_decode($_POST['bairro']);
+$cidade = utf8_decode($_POST['cidade']);
 $uf = $_POST['uf'];
 $perfil = $_POST['perfil'];
 $login = $_POST['login'];
 $senha = sha1($_POST['senha']);
 
-$sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
-$resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
+$sqlVerificaDuplicidade = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil'";
+$resultadoVerificaDuplicidade = mysqli_query($conn,$sqlVerificaDuplicidade);
+$contadorVerificaDuplicidade = mysqli_num_rows($resultadoVerificaDuplicidade);
 
-if ($sqlInsereUsuario) {
-    echo '<script type="text/javascript">'; 
-    echo 'alert("Usuário Cadastrado com Sucesso!");'; 
-    echo 'window.location.href = "index.php";';
-    echo '</script>';
-}else {
-    echo  "<script>alert('Não foi possível cadastrar o usuário');</script>";
-    header("location:cadastro_usuario.php");
-}
+if ($contadorVerificaDuplicidade == 0) {
+   
+    $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
+    $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
+
+    if ($sqlInsereUsuario) {
+        echo '<script type="text/javascript">'; 
+        echo 'alert("Usuário Cadastrado com Sucesso!");'; 
+        echo 'window.location.href = "index.php";';
+        echo '</script>';
+    }else {
+        echo  "<script>alert('Não foi possível cadastrar o usuário');</script>";
+        header("location:cadastro_usuario.php");
+        }
+} else {
+    echo  "<script>alert('Não foi possível cadastrar o usuário, o login já está sendo utilizado');</script>";
+    echo "<script>window.history.back();</script>";
+    }
 
 ?>
