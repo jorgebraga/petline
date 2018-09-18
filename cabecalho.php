@@ -5,7 +5,7 @@
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="js/valida_form.js?2"></script>
+        <script src="js/valida_form.js?6"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="js/bootstrap.min.js"></script>

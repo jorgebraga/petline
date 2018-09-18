@@ -31,14 +31,16 @@ $dt_nascimento = $_POST['dt_nascimento'];
 $telefone = $_POST['telefone'];
 $rg = $_POST['rg'];
 $cpf = $_POST['cpf'];
-$pais = $_POST['pais'];
-$uf = $_POST['uf'];
+$cep = $_POST['cep'];
+$rua = $_POST['rua'];
+$bairro = $_POST['bairro'];
 $cidade = $_POST['cidade'];
+$uf = $_POST['uf'];
 $perfil = $_POST['perfil'];
 $login = $_POST['login'];
 $senha = sha1($_POST['senha']);
 
-$sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,pais,uf,cidade,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$pais','$uf','$cidade','$login','$senha','$perfil')";
+$sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
 $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
 
 if ($sqlInsereUsuario) {

@@ -44,6 +44,7 @@ if (isset($_GET['cod'])) {
             <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
 
             <script src='js/valida_form.js'></script>
+            <script type='text/javascript' src='js/jquery.mask.min.js'></script>
 
             <!-- Latest compiled JavaScript -->
             <script src='js/bootstrap.min.js'></script>
@@ -92,74 +93,50 @@ if (isset($_GET['cod'])) {
 
             <div class="form-group col-md-12">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);">
+                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
             </div>
 
             <div class="form-row">
 
                 <div class="col-md-6">
                     <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event);>
+                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <script type="text/javascript">$("#rg").mask("00.000.000-9");</script>
                 </div>
 
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" maxlength="20" id="cpf" onkeydown=validateNumber(event);>
+                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
                 </div>
 
             </div>
 
             <div class="form-row">
-
-                <div class="form-group col-md-6">
-                    <label for="pais">Pais</label>
-                    <select name="pais" class="form-control" id="pais">
-                        <option selected value="0">Selecione...</option>
-                        <option value="brasil">Brasil</option>
-                    </select>
+                <div class="form-group col-md-2">
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep" value="" size="10" maxlength="9"  class="form-control" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <script type="text/javascript">$("#cep").mask("00000-000");</script>
                 </div>
-
                 <div class="form-group col-md-6">
-
-                    <label for="uf">UF</label>
-                    <select name="uf" class="form-control" id="uf">
-                        <option selected value="0">Selecione...</option>
-                        <option value="ac">AC</option>
-                        <option value="al">AL</option>
-                        <option value="am">AM</option>
-                        <option value="ap">AP</option>
-                        <option value="ba">BA</option>
-                        <option value="ce">CE</option>
-                        <option value="df">DF</option>
-                        <option value="es">ES</option>
-                        <option value="go">GO</option>
-                        <option value="ma">MA</option>
-                        <option value="mg">MG</option>
-                        <option value="ms">MS</option>
-                        <option value="mt">MT</option>
-                        <option value="pa">PA</option>
-                        <option value="pb">PB</option>
-                        <option value="pe">PE</option>
-                        <option value="pi">PI</option>
-                        <option value="pr">PR</option>
-                        <option value="rj">RJ</option>
-                        <option value="rn">RN</option>
-                        <option value="ro">RO</option>
-                        <option value="rr">RR</option>
-                        <option value="rs">RS</option>
-                        <option value="sc">SC</option>
-                        <option value="se">SE</option>
-                        <option value="sp">SP</option>
-                        <option value="to">TO</option>
-                    </select>
-
+                    <label for="rua">Rua</label>
+                    <input type="text" name="rua" id="rua"  class="form-control">
                 </div>
-
+                <div class="form-group col-md-4">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro"  class="form-control">
+                </div>
             </div>
 
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-8">
                 <label for="cidade">Cidade</label>
                 <input type="text" class="form-control" name="cidade" maxlength="255" id="cidade">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="uf">Estado</label>
+                <input type="text" class="form-control" name="uf" maxlength="2" id="uf">
             </div>
 
             <div class="form-group col-md-12">

@@ -1,6 +1,5 @@
 $ (document).ready(function(){
 
-    /*Validacao de Campos */
     $("#salvar").click(function(){
 
         var cont = 0;
