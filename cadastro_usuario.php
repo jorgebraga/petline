@@ -97,6 +97,52 @@
 
 </script>
 
+<script type="text/javascript">
+
+function VerificaCPF () {
+    if (vercpf(document.cadastro_usuario.cpf.value)) 
+    { //CPF valido
+    }else {
+        alert('CPF NÃO VÁLIDO');
+        document.cadastro_usuario.cpf.value="";
+        document.cadastro_usuario.cpf.focus();
+    }
+
+}
+
+function vercpf (cpf) {
+
+    cpf = cpf.replace('.','');
+    cpf = cpf.replace('.','');
+    cpf = cpf.replace('-','');
+
+    if (cpf.length == 0){
+        return true;
+    }else{
+    if (cpf.length != 11 || cpf == "00000000000" || cpf == "11111111111" || cpf == "22222222222" || cpf == "33333333333" || cpf == "44444444444" || cpf == "55555555555" || cpf == "66666666666" || cpf == "77777777777" || cpf == "88888888888" || cpf == "99999999999")
+    return false;
+    add = 0;
+    for (i=0; i < 9; i ++)
+    add += parseInt(cpf.charAt(i)) * (10 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+    rev = 0;
+    if (rev != parseInt(cpf.charAt(9)))
+    return false;
+    add = 0;
+    for (i = 0; i < 10; i ++)
+    add += parseInt(cpf.charAt(i)) * (11 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+    rev = 0;
+    if (rev != parseInt(cpf.charAt(10)))
+    return false;
+    return true;
+    }
+}
+
+</script>
+
 <?php
 
 $pc = 0;
@@ -112,7 +158,7 @@ if (isset($_GET['cod'])) {
             <!-- jQuery library -->
             <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
 
-            <script src='js/valida_form.js?12'></script>
+            <script src='js/valida_form.js?23'></script>
             <script type='text/javascript' src='js/jquery.mask.min.js'></script>
 
             <!-- Latest compiled JavaScript -->
@@ -176,7 +222,7 @@ if (isset($_GET['cod'])) {
 
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();">
                     <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
                 </div>
 

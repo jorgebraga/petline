@@ -15,6 +15,22 @@
 ?>
 <form action="processa_login.php" method="POST">
 
+    <!--Codigo e=1 é login ou senha invalidos -->
+    <!--Codigo e=2 é página restrita -->
+    
+    <?php
+        if(isset($_GET['e'])){
+            $cod_erro = $_GET['e'];
+            switch($cod_erro){
+                case 1:
+                    echo"<div class='alert alert-danger' role='alert'>Usuário ou senha inválidos.</div>";
+                break;
+                case 2:
+                    echo"<div class='alert alert-danger' role='alert'>Página restrita, por favor, realizar o login.</div>";
+                break;
+            }
+        }
+    ?>
     <div style='margin-top: 10%'>
         <div class="container" align="center">
             Digite os dados de acesso:

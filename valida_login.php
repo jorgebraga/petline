@@ -13,12 +13,12 @@ if (isset($_SESSION['login']) and isset($_SESSION['perfil'])) {
 
     if ($contadorValidaLogin == 0) {
         session_destroy();
-        header("location:login.php");
+        header("location:login.php?e=1");
     }
 }else {
     
     session_destroy();
-    header("location:login.php");
+    header("location:login.php?e=2");
     
 }
 

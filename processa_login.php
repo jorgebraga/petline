@@ -18,7 +18,7 @@ if ($contadorValidaLogin > 0) {
     header("location:index.php");
 }else {
     session_destroy();
-    header("location:login.php");
+    header("location:login.php?e=1");
 }
 
 ?>

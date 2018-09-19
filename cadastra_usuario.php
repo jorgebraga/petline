@@ -40,27 +40,51 @@ $perfil = $_POST['perfil'];
 $login = $_POST['login'];
 $senha = sha1($_POST['senha']);
 
-$sqlVerificaDuplicidade = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil'";
-$resultadoVerificaDuplicidade = mysqli_query($conn,$sqlVerificaDuplicidade);
-$contadorVerificaDuplicidade = mysqli_num_rows($resultadoVerificaDuplicidade);
+/*valida login*/
+$sqlVerificaDuplicidadeLogin = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil'";
+$resultadoVerificaDuplicidadeLogin = mysqli_query($conn,$sqlVerificaDuplicidadeLogin);
+$contadorVerificaDuplicidadeLogin = mysqli_num_rows($resultadoVerificaDuplicidadeLogin);
 
-if ($contadorVerificaDuplicidade == 0) {
-   
-    $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
-    $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
+/*valida email*/
+$sqlVerificaDuplicidadeEmail = "SELECT email FROM usuario WHERE email = '$email'";
+$resultadoVerificaDuplicidadeEmail = mysqli_query($conn,$sqlVerificaDuplicidadeEmail);
+$contadorVerificaDuplicidadeEmail = mysqli_num_rows($resultadoVerificaDuplicidadeEmail);
 
-    if ($sqlInsereUsuario) {
-        echo '<script type="text/javascript">'; 
-        echo 'alert("Usuário Cadastrado com Sucesso!");'; 
-        echo 'window.location.href = "index.php";';
-        echo '</script>';
+/*valida cpf*/
+$sqlVerificaDuplicidadeCpf = "SELECT cpf FROM usuario WHERE cpf = '$cpf'";
+$resultadoVerificaDuplicidadeCpf = mysqli_query($conn,$sqlVerificaDuplicidadeCpf);
+$contadorVerificaDuplicidadeCpf = mysqli_num_rows($resultadoVerificaDuplicidadeCpf);
+
+if ($contadorVerificaDuplicidadeLogin == 0) {
+    if ($contadorVerificaDuplicidadeEmail == 0) {
+        if ($contadorVerificaDuplicidadeCpf == 0) {
+
+            $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
+            $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
+
+            if ($sqlInsereUsuario) {
+                echo '<script type="text/javascript">'; 
+                echo 'alert("Usuário Cadastrado com Sucesso!");'; 
+                echo 'window.location.href = "index.php";';
+                echo '</script>';
+            }else {
+                echo  "<script>alert('Não foi possível cadastrar o usuário');</script>";
+                header("location:cadastro_usuario.php");
+                }
+
+        }else {
+            echo  "<script>alert('Não foi possível cadastrar o usuário, o cpf já está sendo utilizado');</script>";
+            echo "<script>window.history.back();</script>";
+            }
+
     }else {
-        echo  "<script>alert('Não foi possível cadastrar o usuário');</script>";
-        header("location:cadastro_usuario.php");
+        echo  "<script>alert('Não foi possível cadastrar o usuário, o e-mail já está sendo utilizado');</script>";
+        echo "<script>window.history.back();</script>";
         }
-} else {
+        
+}else {
     echo  "<script>alert('Não foi possível cadastrar o usuário, o login já está sendo utilizado');</script>";
     echo "<script>window.history.back();</script>";
-    }
+}
 
 ?>
