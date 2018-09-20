@@ -56,6 +56,12 @@ include "cabecalho.php";
   </div><!-- /.container-fluid -->
 </nav>
 
+<section> <!-- Ajustar imagem de logo no fundo -->
+  <div id="img-intro">
+    
+  </div>
+</section> 
+
 <?php
 include "rodape.php";
 ?>
