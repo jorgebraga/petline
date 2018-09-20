@@ -85,14 +85,11 @@ CREATE TABLE `pacote` (
 DROP TABLE IF EXISTS `pesquisa`;
 CREATE TABLE `pesquisa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_passeador` int(11) DEFAULT NULL,
   `pergunta` varchar(255) DEFAULT NULL,
   `nota` varchar(20) NOT NULL,
   `dt_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_passeio` (`id_passeador`),
   KEY `idx_pesquisa` (`id`),
-  CONSTRAINT `fk_passeio` FOREIGN KEY (`id_passeador`) REFERENCES `passeador` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

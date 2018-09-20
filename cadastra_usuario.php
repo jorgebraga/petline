@@ -37,6 +37,11 @@ $bairro = utf8_decode($_POST['bairro']);
 $cidade = utf8_decode($_POST['cidade']);
 $uf = $_POST['uf'];
 $perfil = $_POST['perfil'];
+if (isset($_POST['descricao'])) {
+    $descricao = utf8_decode($_POST['descricao']);
+}else{
+    $descricao = null;
+}
 $login = $_POST['login'];
 $senha = sha1($_POST['senha']);
 
@@ -59,7 +64,7 @@ if ($contadorVerificaDuplicidadeLogin == 0) {
     if ($contadorVerificaDuplicidadeEmail == 0) {
         if ($contadorVerificaDuplicidadeCpf == 0) {
 
-            $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil')";
+            $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil,descricao) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil','$descricao')";
             $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
 
             if ($sqlInsereUsuario) {

@@ -1,5 +1,15 @@
 $ (document).ready(function(){
 
+    $('#descricao').hide();
+
+    $("#perfil" ).change(function() {
+        if ( $("#perfil" ).val() == "pas") {
+            $('#descricao').show();
+        }else{
+            $('#descricao').hide();
+        }
+    });
+
     $("#salvar").click(function(){
 
         var cont = 0;
@@ -91,6 +101,13 @@ $ (document).ready(function(){
             $("#senha").focus();
             cont++;
             return false;
+        }else{
+           if ($('#senha').val().length < 8){
+                alert("A senha deve ser maior que 8 digitos");
+                $("#senha").focus();
+                cont++;
+                return false;
+           }
         }
 
         if ($("#senha2").val() == "") {
@@ -117,6 +134,16 @@ $ (document).ready(function(){
             $("#perfil").focus();
             cont++;
             return false;
+        }
+
+        if ($("#perfil").val() == "pas") {
+
+            if ($("#descricao").val() == "") {
+                alert("É necessario preencher a descrição");
+                $("#descricao").focus();
+                cont++;
+                return false;
+            }
         }
 
         if (cont == 0) {

@@ -158,7 +158,7 @@ if (isset($_GET['cod'])) {
             <!-- jQuery library -->
             <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
 
-            <script src='js/valida_form.js?23'></script>
+            <script src='js/valida_form.js?28'></script>
             <script type='text/javascript' src='js/jquery.mask.min.js'></script>
 
             <!-- Latest compiled JavaScript -->
@@ -273,10 +273,16 @@ if (isset($_GET['cod'])) {
                 <label for="perfil">Perfil</label>
                 
                 <select name="perfil" class="form-control" style="width:15%" id="perfil">
-                    <option value="0">Selecione...</option>
+                    <option value="0" selected>Selecione...</option>
                     <option value="cli">Cliente</option>
                     <option value="pas">Passeador</option>
                 </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-12">
+                    <p><textarea class="form-control" name="descricao" id="descricao" cols="148" rows="10" placeholder="Descrição"></textarea></p>
+                </div>
             </div>
 
             <div class="form-row">
