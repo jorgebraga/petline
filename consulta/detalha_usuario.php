@@ -144,32 +144,35 @@ function vercpf (cpf) {
 </script>
 
 <?php
-
-$pc = 0;
-
-if (isset($_GET['cod'])) {
-    
-    $pc = 1;
-    echo 
-    "<html>
-        <head>
-            <link rel='stylesheet' href='css/bootstrap.min.css'>
-
-            <!-- jQuery library -->
-            <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-
-            <script src='js/valida_form.js?29'></script>
-            <script type='text/javascript' src='js/jquery.mask.min.js'></script>
-
-            <!-- Latest compiled JavaScript -->
-            <script src='js/bootstrap.min.js'></script>
-        </head>
-    <body>";
-
-    include "../conexao.php";
-}else {
     include "../cabecalho.php";
-}
+
+    if (isset($_GET['id'])) {
+        
+        $id = $_GET['id'];
+
+        $sqlConsultaUsuario = "SELECT nome, sobrenome, email, dt_nascimento, telefone, rg, cpf, cep, rua, cidade, bairro, uf FROM usuario WHERE id = $id";
+        $resultadoConsultaUsuario = mysqli_query($conn,$sqlConsultaUsuario);
+        $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
+
+        if ($contadorConsultaUsuario != 0) {
+
+            while ($linhaUsuario = $resultadoConsultaUsuario -> fetch_array(MYSQLI_ASSOC)) {
+                $nome = utf8_encode($linhaUsuario['nome']);
+                $sobrenome = utf8_encode($linhaUsuario['sobrenome']);
+                $email = $linhaUsuario['email'];
+                $dt_nascimento = $linhaUsuario['dt_nascimento'];
+                $telefone = $linhaUsuario['telefone'];
+                $rg = $linhaUsuario['rg'];
+                $cpf = $linhaUsuario['cpf'];
+                $cep = $linhaUsuario['cep'];
+                $rua = utf8_encode($linhaUsuario['rua']);
+                $cidade = utf8_encode($linhaUsuario['cidade']);
+                $bairro = utf8_encode($linhaUsuario['bairro']);
+                $uf = utf8_encode($linhaUsuario['uf']);
+
+            }
+        }
+    }
 ?>
 
     <div class="container">
@@ -177,38 +180,38 @@ if (isset($_GET['cod'])) {
         <div class="col-md-12">
 
             <div class="page-header">
-                <h2>Cadastre-se</h2>
+                <h2>Altere as Informações</h2>
             </div>
 <?php
-    echo "<form action='cadastra_usuario.php?pc=$pc' method='post' name='cadastro_usuario' id='cadastro_usuario'>";
+    echo "<form action='http://www.petline.com.br/cadastra_usuario.php?id=$id' method='post' name='cadastro_usuario' id='cadastro_usuario'>";
 ?>
             <div class="form-row">
 
                 <div class="col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome">
+                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome" value='<?php echo $nome; ?>'>
                 </div>
 
                 <div class="col-md-6">
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome">
+                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome" value='<?php echo $sobrenome; ?>'>
                 </div>
 
             </div>
 
              <div class="form-group col-md-6">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" onblur="validacaoEmail(event)" maxlength="60" size='65'>
+                <input type="text" class="form-control" name="email" id="email" onblur="validacaoEmail(event)" maxlength="60" size='65' value='<?php echo $email; ?>'>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="dt_nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento">
+                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento" value=<?php echo $dt_nascimento; ?>>
             </div>
 
             <div class="form-group col-md-12">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $telefone; ?>'>
                 <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
             </div>
 
@@ -216,13 +219,13 @@ if (isset($_GET['cod'])) {
 
                 <div class="col-md-6">
                     <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $rg; ?>'>
                     <script type="text/javascript">$("#rg").mask("00.000.000-9");</script>
                 </div>
 
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();">
+                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();" value='<?php echo $cpf; ?>'>
                     <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
                 </div>
 
@@ -231,52 +234,37 @@ if (isset($_GET['cod'])) {
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label for="cep">CEP</label>
-                    <input type="text" name="cep" id="cep" value="" size="10" maxlength="9"  class="form-control" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="pesquisacep(this.value);">
+                    <input type="text" name="cep" id="cep" size="10" maxlength="9"  class="form-control" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="pesquisacep(this.value);" value='<?php echo $cep; ?>'>
                     <script type="text/javascript">$("#cep").mask("00000-000");</script>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="rua">Rua</label>
-                    <input type="text" name="rua" id="rua"  class="form-control">
+                    <input type="text" name="rua" id="rua"  class="form-control" value='<?php echo $rua; ?>'>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro"  class="form-control">
+                    <input type="text" name="bairro" id="bairro"  class="form-control" value='<?php echo $bairro; ?>'>
                 </div>
             </div>
 
             <div class="form-group col-md-8">
                 <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" name="cidade" maxlength="255" id="cidade">
+                <input type="text" class="form-control" name="cidade" maxlength="255" id="cidade" value='<?php echo $cidade; ?>'>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="uf">Estado</label>
-                <input type="text" class="form-control" name="uf" maxlength="2" id="uf">
-            </div>
-
-            <div class="form-group col-md-12">
-                <label for="login">Login</label>
-                <input type="text" class="form-control" name="login" maxlength="25" id="login">
+                <input type="text" class="form-control" name="uf" maxlength="2" id="uf" value='<?php echo $uf; ?>'>
             </div>
 
             <div class="form-group col-md-6">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" name="senha" maxlength="50" id="senha">
+                <label for="senhaAlteracao">Senha</label>
+                <input type="password" class="form-control" name="senhaAlteracao" maxlength="50" id="senhaAlteracao" placeholder="Mantenha em branco para não alterar a senha">
             </div>
 
             <div class="form-group col-md-6">
-                <label for="senha2">Confirme Sua Senha</label>
-                <input type="password" class="form-control" name="senha2" maxlength="50" id="senha2">
-            </div>
-
-            <div class="form-group col-md-12">
-                <label for="perfil">Perfil</label>
-                
-                <select name="perfil" class="form-control" style="width:15%" id="perfil">
-                    <option value="0" selected>Selecione...</option>
-                    <option value="cli">Cliente</option>
-                    <option value="pas">Passeador</option>
-                </select>
+                <label for="senhaAlteracao2">Confirme Sua Senha</label>
+                <input type="password" class="form-control" name="senhaAlteracao2" maxlength="50" id="senhaAlteracao2" placeholder="Mantenha em branco para não alterar a senha">
             </div>
             
             <div class="form-row">

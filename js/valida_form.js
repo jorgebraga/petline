@@ -95,38 +95,58 @@ $ (document).ready(function(){
             return false;
         }
 
-        if ($("#senha").val() == "") {
-    
-            alert("É necessario preencher a senha");
-            $("#senha").focus();
-            cont++;
-            return false;
+
+        if($("#senhaAlteracao").length > 0){
+            if ($("#senhaAlteracao").val() != "") {
+
+                if ($("#senhaAlteracao").val() != $("#senhaAlteracao2").val()) {
+        
+                    alert("As senhas não conferem");
+                    $("#senhaAlteracao").val('');
+                    $("#senhaAlteracao2").val('');
+                    $("#senhaAlteracao").focus();
+                    cont++;
+                    return false;
+                }   
+            }
         }else{
-           if ($('#senha').val().length < 8){
-                alert("A senha deve ser maior que 8 digitos");
+            if ($("#senha").val() == "") {
+    
+                alert("É necessario preencher a senha");
                 $("#senha").focus();
                 cont++;
                 return false;
-           }
+            }else{
+               if ($('#senha').val().length < 8){
+                    alert("A senha deve ser maior que 8 digitos");
+                    $("#senha").focus();
+                    cont++;
+                    return false;
+               }
+            }
+    
+            if ($("#senha2").val() == "") {
+        
+                alert("É necessario confirmar a senha");
+                $("#senha2").focus();
+                cont++;
+                return false;
+            }
+    
+            if ($("#senha").val() != $("#senha2").val()) {
+        
+                alert("As senhas não conferem");
+                $("#senha").val('');
+                $("#senha2").val('');
+                $("#senha").focus();
+                cont++;
+                return false;
+            }
+
         }
 
-        if ($("#senha2").val() == "") {
-    
-            alert("É necessario confirmar a senha");
-            $("#senha2").focus();
-            cont++;
-            return false;
-        }
 
-        if ($("#senha").val() != $("#senha2").val()) {
-    
-            alert("As senhas não conferem");
-            $("#senha").val('');
-            $("#senha2").val('');
-            $("#senha").focus();
-            cont++;
-            return false;
-        }
+        
         
         if ($("#perfil").val() == "0") {
     

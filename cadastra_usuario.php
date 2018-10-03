@@ -1,6 +1,10 @@
 <?php
 
-$perfilCliente   = $_GET['pc'];
+$perfilCliente=0;
+
+if (isset($_GET['pc'])) {
+    $perfilCliente = $_GET['pc'];
+}
 
 if ($perfilCliente == 1) {
     
@@ -21,6 +25,11 @@ if ($perfilCliente == 1) {
 }else {
     include "cabecalho.php";
 }
+
+if (isset($_GET['id'])) {
+    echo "Foi";
+}
+    exit;
 
 session_start();
 

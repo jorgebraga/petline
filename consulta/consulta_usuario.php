@@ -26,16 +26,21 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
         <tr>
             <th>Nome</th>
             <th>Login</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
         <?php
             if ($contadorConsultaUsuario > 0) {
                 while ($linhaUsuario = $resultadoConsultaUsuario -> fetch_array(MYSQLI_ASSOC)) {
                     $nome = $linhaUsuario['nome'];
                     $login = $linhaUsuario['login'];
+                    $id = $linhaUsuario['id'];
 
                     echo "<tr>
-                        <td>$nome</td>
-                        <td>$login</td>
+                        <td width=50%>$nome</td>
+                        <td width=30%>$login</td>
+                        <td width=10% align=center><a href='http://www.petline.com.br/consulta/detalha_usuario.php?id=$id'> <span class='glyphicon glyphicon-pencil'></span> </a></td>
+                        <td width=10% align=center><a href='http://www.petline.com.br/consulta/deleta_usuario.php'> <span class='glyphicon glyphicon-trash'></span> </a></td>
                         </tr>";
                 }
             }else{

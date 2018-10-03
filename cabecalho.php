@@ -6,7 +6,7 @@
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="http://www.petline.com.br/js/valida_form.js?28"></script>
+        <script src="http://www.petline.com.br/js/valida_form.js?30"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
