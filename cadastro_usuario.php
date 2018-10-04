@@ -166,9 +166,9 @@ if (isset($_GET['cod'])) {
         </head>
     <body>";
 
-    include "../conexao.php";
+    include "conexao.php";
 }else {
-    include "../cabecalho.php";
+    include "cabecalho.php";
 }
 ?>
 
@@ -301,5 +301,5 @@ if (isset($_GET['cod'])) {
     </div>
 
 <?php
-include "../rodape.php";
+include "rodape.php";
 ?>

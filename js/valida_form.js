@@ -144,9 +144,6 @@ $ (document).ready(function(){
             }
 
         }
-
-
-        
         
         if ($("#perfil").val() == "0") {
     

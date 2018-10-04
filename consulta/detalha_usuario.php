@@ -97,52 +97,6 @@
 
 </script>
 
-<script type="text/javascript">
-
-function VerificaCPF () {
-    if (vercpf(document.cadastro_usuario.cpf.value)) 
-    { //CPF valido
-    }else {
-        alert('CPF NÃO VÁLIDO');
-        document.cadastro_usuario.cpf.value="";
-        document.cadastro_usuario.cpf.focus();
-    }
-
-}
-
-function vercpf (cpf) {
-
-    cpf = cpf.replace('.','');
-    cpf = cpf.replace('.','');
-    cpf = cpf.replace('-','');
-
-    if (cpf.length == 0){
-        return true;
-    }else{
-    if (cpf.length != 11 || cpf == "00000000000" || cpf == "11111111111" || cpf == "22222222222" || cpf == "33333333333" || cpf == "44444444444" || cpf == "55555555555" || cpf == "66666666666" || cpf == "77777777777" || cpf == "88888888888" || cpf == "99999999999")
-    return false;
-    add = 0;
-    for (i=0; i < 9; i ++)
-    add += parseInt(cpf.charAt(i)) * (10 - i);
-    rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
-    rev = 0;
-    if (rev != parseInt(cpf.charAt(9)))
-    return false;
-    add = 0;
-    for (i = 0; i < 10; i ++)
-    add += parseInt(cpf.charAt(i)) * (11 - i);
-    rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
-    rev = 0;
-    if (rev != parseInt(cpf.charAt(10)))
-    return false;
-    return true;
-    }
-}
-
-</script>
-
 <?php
     include "../cabecalho.php";
 
@@ -150,7 +104,7 @@ function vercpf (cpf) {
         
         $id = $_GET['id'];
 
-        $sqlConsultaUsuario = "SELECT nome, sobrenome, email, dt_nascimento, telefone, rg, cpf, cep, rua, cidade, bairro, uf FROM usuario WHERE id = $id";
+        $sqlConsultaUsuario = "SELECT nome, sobrenome, email, dt_nascimento, telefone, rg, cpf, cep, rua, cidade, bairro, uf, perfil, descricao FROM usuario WHERE id = $id";
         $resultadoConsultaUsuario = mysqli_query($conn,$sqlConsultaUsuario);
         $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
 
@@ -169,12 +123,22 @@ function vercpf (cpf) {
                 $cidade = utf8_encode($linhaUsuario['cidade']);
                 $bairro = utf8_encode($linhaUsuario['bairro']);
                 $uf = utf8_encode($linhaUsuario['uf']);
+                $perfil = $linhaUsuario['perfil'];
+                if ($perfil == 'pas') {
+                    $descricao = utf8_encode($linhaUsuario['descricao']);
+                }
 
             }
         }
     }
 ?>
+<head>
+    <script src='http://www.petline.com.br/js/valida_form.js?30'></script>
+    <script type='text/javascript' src='http://www.petline.com.br/js/jquery.mask.min.js'></script>
 
+    <!-- Latest compiled JavaScript -->
+    <script src='http://www.petline.com.br/js/bootstrap.min.js'></script>
+</head>
     <div class="container">
 
         <div class="col-md-12">
@@ -211,24 +175,8 @@ function vercpf (cpf) {
 
             <div class="form-group col-md-12">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $telefone; ?>'>
+                <input type="text" class="form-control" name="telefone" maxlength="15" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $telefone; ?>'>
                 <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
-            </div>
-
-            <div class="form-row">
-
-                <div class="col-md-6">
-                    <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $rg; ?>'>
-                    <script type="text/javascript">$("#rg").mask("00.000.000-9");</script>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();" value='<?php echo $cpf; ?>'>
-                    <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
-                </div>
-
             </div>
 
             <div class="form-row">
@@ -267,11 +215,17 @@ function vercpf (cpf) {
                 <input type="password" class="form-control" name="senhaAlteracao2" maxlength="50" id="senhaAlteracao2" placeholder="Mantenha em branco para não alterar a senha">
             </div>
             
-            <div class="form-row">
-                <div class="col-md-12">
-                    <p><textarea class="form-control" name="descricao" id="descricao" cols="148" rows="10" placeholder="Descrição"></textarea></p>
+            <?php
+            if ($perfil == 'pas') {
+                echo "
+                <div class='form-row'>
+                    <div class='col-md-12'>
+                        <p><textarea class='form-control' name='descricaoAtualizar' id='descricaoAtualizar' cols='148' rows='10' placeholder='Descrição'>$descricao</textarea></p>
+                    </div>
                 </div>
-            </div>
+                ";
+            }
+            ?>
 
             <div class="form-row">
 
