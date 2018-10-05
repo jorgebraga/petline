@@ -133,7 +133,6 @@
     }
 ?>
 <head>
-    <script src='http://www.petline.com.br/js/valida_form.js?30'></script>
     <script type='text/javascript' src='http://www.petline.com.br/js/jquery.mask.min.js'></script>
 
     <!-- Latest compiled JavaScript -->

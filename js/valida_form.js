@@ -106,8 +106,8 @@ $ (document).ready(function(){
                     $("#senhaAlteracao2").val('');
                     $("#senhaAlteracao").focus();
                     cont++;
-                    return false;
-                }   
+                    //return false;
+                }
             }
         }else{
             if ($("#senha").val() == "") {
@@ -162,9 +162,9 @@ $ (document).ready(function(){
                 return false;
             }
         }
-
+        
         if (cont == 0) {
-            $("#cadastro_usuario").submit();
+           $("#cadastro_usuario").submit();
         }
     })
 });

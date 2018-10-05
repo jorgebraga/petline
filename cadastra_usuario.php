@@ -38,12 +38,14 @@ $rua = utf8_decode($_POST['rua']);
 $bairro = utf8_decode($_POST['bairro']);
 $cidade = utf8_decode($_POST['cidade']);
 $uf = $_POST['uf'];
+$senha = $_POST['senha'];
 
 if (isset($_GET['id'])) {
 
     //Alterar Usuário
     $id = $_GET['id'];
     $descricao = utf8_decode($_POST['descricaoAtualizar']);
+    $senha = $_POST['senhaAlteracao'];
 
 }else{
 
@@ -55,7 +57,6 @@ if (isset($_GET['id'])) {
         $descricao = null;
     }
     $login = $_POST['login'];
-    $senha = sha1($_POST['senha']);
     $rg = $_POST['rg'];
     $cpf = $_POST['cpf'];
 }
@@ -94,8 +95,14 @@ if ($contadorVerificaDuplicidadeLogin == 0) {
         if ($contadorVerificaDuplicidadeCpf == 0) {
 
             if (isset($id)) {
-                $sqlInsereUsuario = "UPDATE usuario SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', dt_nascimento = '$dt_nascimento', telefone = '$telefone', cep = '$cep', rua = '$rua', bairro = '$bairro', cidade = '$cidade', uf = '$uf', descricao = '$descricao' WHERE id = '$id'";
+                if ($senha == "") {
+                    $sqlInsereUsuario = "UPDATE usuario SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', dt_nascimento = '$dt_nascimento', telefone = '$telefone', cep = '$cep', rua = '$rua', bairro = '$bairro', cidade = '$cidade', uf = '$uf', descricao = '$descricao' WHERE id = '$id'";   
+                }else{
+                    $senha = sha1($senha);
+                    $sqlInsereUsuario = "UPDATE usuario SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', dt_nascimento = '$dt_nascimento', telefone = '$telefone', cep = '$cep', rua = '$rua', bairro = '$bairro', cidade = '$cidade', uf = '$uf', descricao = '$descricao', senha = '$senha' WHERE id = '$id'"; 
+                }
             }else{
+                $senha = sha1($senha);
                 $sqlInsereUsuario = "INSERT INTO usuario (nome,sobrenome,email,dt_nascimento,telefone,rg,cpf,cep,rua,bairro,cidade,uf,login,senha,perfil,descricao,ativo) VALUES ('$nome','$sobrenome','$email','$dt_nascimento','$telefone','$rg','$cpf','$cep','$rua','$bairro','$cidade','$uf','$login','$senha','$perfil','$descricao',1)";
             }
             $resultadoInsereUsuario = mysqli_query($conn,$sqlInsereUsuario);
