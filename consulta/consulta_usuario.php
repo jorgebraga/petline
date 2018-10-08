@@ -42,12 +42,12 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
                         <td width=30%>$login</td>";
                     if ($ativo == 1) {
                         echo "
-                        <td width=10% align=center><a href='http://www.petline.com.br/consulta/detalha_usuario.php?id=$id' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span> Alterar</a></td>
-                        <td width=10% align=center><a href='http://www.petline.com.br/consulta/deleta_usuario.php' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Desativar</a></td>
-                        </tr>";
+                        <td width=10% align=center><a href='http://www.petline.com.br/consulta/detalha_usuario.php?id=$id' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span> Alterar</a></td>";?>
+                        <td width=10% align=center><a href="http://www.petline.com.br/consulta/deleta_usuario.php" onclick="if(confirm('Tem certeza que deseja desativar o usuário?')) <?php echo "window.location.href = 'http://www.petline.com.br/consulta/deleta_usuario.php?cod=$id';" ?> ; return false" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Desativar</a></td>
+                        <?php echo "</tr>";
                     }else{
                         echo "
-                        <td width=20% colspan=2 align=center><a href='#' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Ativar</a></td>
+                        <td width=20% colspan=2 align=center><a href='http://www.petline.com.br/consulta/ativa_usuario.php?cod=$id' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Ativar</a></td>
                         </tr>";
                     }
                 }
