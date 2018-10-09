@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $perfilCliente=0;
 
 if (isset($_GET['pc'])) {
@@ -24,6 +22,7 @@ if ($perfilCliente == 1) {
     <body>";
 
     include "conexao.php";
+    session_start();
 }else {
     include "cabecalho.php";
 }
@@ -38,13 +37,16 @@ $rua = utf8_decode($_POST['rua']);
 $bairro = utf8_decode($_POST['bairro']);
 $cidade = utf8_decode($_POST['cidade']);
 $uf = $_POST['uf'];
-$senha = $_POST['senha'];
 
 if (isset($_GET['id'])) {
 
     //Alterar Usuário
     $id = $_GET['id'];
-    $descricao = utf8_decode($_POST['descricaoAtualizar']);
+    if ($_SESSION['perfil'] == 'pas') {
+        $descricao = utf8_decode($_POST['descricaoAtualizar']);
+    }else{
+        $descricao = null;
+    }
     $senha = $_POST['senhaAlteracao'];
 
 }else{
@@ -59,6 +61,7 @@ if (isset($_GET['id'])) {
     $login = $_POST['login'];
     $rg = $_POST['rg'];
     $cpf = $_POST['cpf'];
+    $senha = $_POST['senha'];
 }
 
 

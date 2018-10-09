@@ -1,3 +1,9 @@
+<?php
+include "conexao.php";
+include "valida_login.php";
+$perfil = $_SESSION['perfil'];
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="http://www.petline.com.br/css/bootstrap.min.css">
@@ -23,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Inicio</a>
+      <a class="navbar-brand" href="http://www.petline.com.br/index.php">Inicio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,14 +37,36 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ações <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="http://www.petline.com.br/consulta/consulta_usuario.php">Consulta Usuário</a></li>
-            <li><a href="cadastra_pet.php">Cadastra PET</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Sobre</a></li>
-          </ul>
-        </li>
-      </ul>
+          <?php
+            switch ($perfil) {
+              case 'adm':
+                echo "
+                <ul class='dropdown-menu'>
+                  <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
+                  <li><a href='http://www.petline.com.br/cadastra_pet.php'>Cadastra PET</a></li>
+                  <li><a href='#'>Agenda</a></li>
+                  <li><a href='#'>Histórico Passeador</a></li>
+                  <li><a href='#'>Histórico Cliente</a></li>
+                </ul>";
+                break;
+              case 'pas':
+                echo "
+                <ul class='dropdown-menu'>
+                  <li><a href='#'>Agenda</a></li>
+                  <li><a href='#'>Histórico Passeador</a></li>
+                </ul>";
+                break;
+              case 'cli':
+                echo "
+                <ul class='dropdown-menu'>
+                  <li><a href='#'>Cadastra PET</a></li>
+                  <li><a href='#'>Histórico Cliente</a></li>
+                </ul>";
+                break;
+          }
+        ?>
+      </li>
+    </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Pesquisar">
@@ -46,13 +74,16 @@
         <button type="button" class="btn btn-primary" id="pesquisa"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://www.petline.com.br/logout.php">Sair</a></li>
-      </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
+          <ul class='dropdown-menu'>
+            <li><a href="#">Alterar Cadastro</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="http://www.petline.com.br/logout.php">Sair</a></li>
+          </ul>
+      </li>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<?php
-    include "conexao.php";
-    include "valida_login.php";
-?>

@@ -45,15 +45,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="perfil">Perfil:</label>
-                    
-                    <select name="perfil" id="perfil">
-                        <option value="cli">Cliente</option>
-                        <option value="pas">Passeador</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <button type="submit" class="btn btn-primary"> Entrar</button>
                 </div>
             <p>Não possui login?<a href="cadastro_usuario.php?cod"> Clique Aqui</a></p>

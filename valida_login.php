@@ -7,7 +7,7 @@ if (isset($_SESSION['login']) and isset($_SESSION['perfil'])) {
     $login = $_SESSION['login'];
     $perfil = $_SESSION['perfil'];
 
-    $sqlValidaLogin = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil'";
+    $sqlValidaLogin = "SELECT login, perfil FROM usuario WHERE login = '$login' and perfil = '$perfil' and ativo = 1";
     $resultadoValidaLogin = mysqli_query($conn,$sqlValidaLogin);
     $contadorValidaLogin = mysqli_num_rows($resultadoValidaLogin);
 
