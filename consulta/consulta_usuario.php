@@ -22,7 +22,7 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
     </div>
 
     <div style="margin: auto; max-width: 800px;">
-    <table width=100% >
+    <table width=100%>
         <tr>
             <th>Nome</th>
             <th>Login</th>

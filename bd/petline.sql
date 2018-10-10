@@ -153,4 +153,4 @@ CREATE TABLE `usuario` (
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES ('1', 'Administrador', 'Petline', 'admin', '23d42f5f3f66498b2c8ff4c20b8c5ac826e47146', 'administrador@petline.com', '00000000', '00000000', '000000000', 'df', '', 'Brazlandia', '2018-01-01 00:00:00', '2018-09-13 20:31:02', null, 'cli', null, '', '');
+INSERT INTO `usuario` VALUES ('1', 'Administrador', 'Petline', 'admin', '23d42f5f3f66498b2c8ff4c20b8c5ac826e47146', 'administrador@petline.com', '00000000', '00000000', '000000000', null, '', null, '2018-01-01 00:00:00', '2018-09-13 20:31:02', null, 'adm', null, '', '');
