@@ -2,6 +2,7 @@
 include "conexao.php";
 include "valida_login.php";
 $perfil = $_SESSION['perfil'];
+$nome = $_SESSION['nome'];
 ?>
 
 <html>
@@ -12,7 +13,7 @@ $perfil = $_SESSION['perfil'];
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="http://www.petline.com.br/js/valida_form.js?48"></script>
+        <script src="http://www.petline.com.br/js/valida_form.js?51"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
@@ -43,8 +44,9 @@ $perfil = $_SESSION['perfil'];
                 echo "
                 <ul class='dropdown-menu'>
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='http://www.petline.com.br/cadastra_pet.php'>Cadastra PET</a></li>
+                  <li><a href='http://www.petline.com.br/cadastro_pet.php'>Cadastra PET</a></li>
                   <li><a href='#'>Agenda</a></li>
+                  <li><a href='#'>Consulta Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -59,7 +61,8 @@ $perfil = $_SESSION['perfil'];
               case 'cli':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='#'>Cadastra PET</a></li>
+                  <li><a href='http://www.petline.com.br/cadastro_pet.php'>Cadastra PET</a></li>
+                  <li><a href='#'>Consulta Pacote</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
                 break;
@@ -76,9 +79,9 @@ $perfil = $_SESSION['perfil'];
       <ul class="nav navbar-nav navbar-right">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $nome;?><span class="caret"></span></a>
           <ul class='dropdown-menu'>
-            <li><a href="#">Alterar Cadastro</a></li>
+            <li><a href="#">Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
             <li><a href="http://www.petline.com.br/logout.php">Sair</a></li>

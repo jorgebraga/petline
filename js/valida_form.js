@@ -167,4 +167,52 @@ $ (document).ready(function(){
            $("#cadastro_usuario").submit();
         }
     })
+
+    $("#salvar_pet").click(function(){
+
+        var cont = 0;
+        if ($("#nome_pet").val() == "") {
+    
+            alert("É necessario preencher o nome");
+            $("#nome_pet").focus();
+            cont++;
+            return false;
+        }
+
+        if ($("#raca").val() == "") {
+    
+            alert("É necessario preencher a raça");
+            $("#raca").focus();
+            cont++;
+            return false;
+        }
+
+        if ($("#peso").val() == "") {
+    
+            alert("É necessario preencher o peso");
+            $("#peso").focus();
+            cont++;
+            return false;
+        }
+
+        if ($("#cor").val() == "") {
+    
+            alert("É necessario preencher a cor");
+            $("#cor").focus();
+            cont++;
+            return false;
+        }
+
+        if ($("#descricao_pet").val() == "") {
+    
+            alert("É necessario preencher a descrição");
+            $("#descricao_pet").focus();
+            cont++;
+            return false;
+        }
+        
+        if (cont == 0) {
+           $("#cadastro_pet").submit();
+        }
+    })
 });

@@ -228,12 +228,12 @@
 
             <div class="form-row">
 
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" id="salvar"> Salvar </button>
+                <div class="col-md-6" align="left">
+                    <a href="index.php" class="btn btn-danger">Cancelar</a>
                 </div>
 
                 <div class="col-md-6" align="right">
-                    <a href="index.php" class="btn btn-danger">Cancelar</a>
+                    <button type="button" class="btn btn-primary" id="salvar"> Salvar </button>
                 </div>
 
             </div>
