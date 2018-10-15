@@ -1,7 +1,7 @@
 <?php
 include "../cabecalho.php";
 
-$sqlConsultaUsuario = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, ativo FROM usuario";
+$sqlConsultaUsuario = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, ativo, perfil FROM usuario";
 $resultadoConsultaUsuario = mysqli_query($conn,$sqlConsultaUsuario);
 $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
 ?>
@@ -26,7 +26,7 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
         <tr>
             <th>Nome</th>
             <th>Login</th>
-            <th></th>
+            <th>Perfil</th>
             <th></th>
         </tr>
         <?php
@@ -36,10 +36,12 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
                     $login = $linhaUsuario['login'];
                     $id = $linhaUsuario['id'];
                     $ativo = $linhaUsuario['ativo'];
+                    $perfil = $linhaUsuario['perfil'];
 
                     echo "<tr>
                         <td width=50%>$nome</td>
-                        <td width=30%>$login</td>";
+                        <td width=15%>$login</td>
+                        <td width=15%>$perfil</td>";
                     if ($ativo == 1) {
                         echo "
                         <td width=10% align=center><a href='http://www.petline.com.br/consulta/detalha_usuario.php?id=$id' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span> Alterar</a></td>";?>

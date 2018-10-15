@@ -5,7 +5,7 @@ include "cabecalho.php";
 <div class="container">
     <div class="col-md-12">
         <div class="page-header">
-            <h2>Cadastre-se seu PET</h2>
+            <h2>Cadastre seu PET</h2>
         </div>
         <form action="cadastra_pet.php" method="post" name="cadastro_pet" id="cadastro_pet">
             <div class="form-row">
@@ -21,7 +21,7 @@ include "cabecalho.php";
 
                 <div class="col-md-6">
                     <label for="peso">Peso</label>
-                    <input type="text" class="form-control" name="peso" maxlength="255" id="peso">
+                    <input type="number" class="form-control" name="peso" maxlength="255" id="peso">
                 </div>
 
                 <div class="col-md-6">
