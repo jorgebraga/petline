@@ -3,6 +3,7 @@ include "conexao.php";
 include "valida_login.php";
 $perfil = $_SESSION['perfil'];
 $nome = $_SESSION['nome'];
+$id = $_SESSION['id'];
 ?>
 
 <html>
@@ -61,7 +62,7 @@ $nome = $_SESSION['nome'];
               case 'cli':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/cadastro_pet.php'>Cadastra PET</a></li>
+                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>    
                   <li><a href='#'>Consulta Pacote</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -81,10 +82,10 @@ $nome = $_SESSION['nome'];
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $nome;?><span class="caret"></span></a>
           <ul class='dropdown-menu'>
-            <li><a href="#">Perfil</a></li>
+            <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
-            <li><a href="http://www.petline.com.br/logout.php">Sair</a></li>
+            <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
           </ul>
       </li>
     </div><!-- /.navbar-collapse -->

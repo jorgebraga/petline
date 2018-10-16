@@ -1,23 +1,31 @@
 <?php
 include "../cabecalho.php";
 
-$sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id";
+$id = $_SESSION['id'];
+
+if ($id == 1) {
+    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id";
+}else{
+    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id WHERE P.id_usuario = $id";
+}
+
 $resultadoConsultaPet = mysqli_query($conn,$sqlConsultaPet);
 $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
 ?>
 
     <h3>Consulta Pet</h3>
-    <h4>Pesquise por uma palavra chave ou selecione o usuario na lista</h4>
+    <h4>Pesquise por uma palavra chave ou selecione o PET da lista</h4>
     <br>
+    
+    <div align="center">
+        <p>Para adicionar um novo PET <a href="http://www.petline.com.br/cadastro_pet.php">Clique Aqui</a></p>
+    </div>
 
     <div style="margin: auto; max-width: 300px;">
         <table>
             <tr>
-                <td><input type="text" class="form-control" id="busca" name="busca"></td>
-                <td><button type="button" class="btn btn-primary" id="busca">
-                    <span class="glyphicon glyphicon-search"> </span>
-                </button></td>
-            <tr>
+                <td>
+            </tr>
         </table>
     </div>
 
