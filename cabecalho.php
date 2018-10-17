@@ -7,16 +7,16 @@ $nome = $_SESSION['nome'];
 
 <html>
     <head>
-        <link rel="stylesheet" href="http://www.petline.com.br/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://www.petline.com.br/css/petline.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/petline.css">
 
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="http://www.petline.com.br/js/valida_form.js?51"></script>
+        <script src="js/valida_form.js?51"></script>
 
         <!-- Latest compiled JavaScript -->
-        <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
 <body>
 
@@ -30,7 +30,7 @@ $nome = $_SESSION['nome'];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.petline.com.br/index.php">Inicio</a>
+      <a class="navbar-brand" href="index.php">Inicio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,8 +43,8 @@ $nome = $_SESSION['nome'];
               case 'adm':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='http://www.petline.com.br/cadastro_pet.php'>Cadastra PET</a></li>
+                  <li><a href='consulta/consulta_usuario.php'>Consulta Usuário</a></li>
+                  <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
                   <li><a href='#'>Agenda</a></li>
                   <li><a href='#'>Consulta Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
@@ -61,7 +61,7 @@ $nome = $_SESSION['nome'];
               case 'cli':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/cadastro_pet.php'>Cadastra PET</a></li>
+                  <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
                   <li><a href='#'>Consulta Pacote</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -84,7 +84,7 @@ $nome = $_SESSION['nome'];
             <li><a href="#">Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
-            <li><a href="http://www.petline.com.br/logout.php">Sair</a></li>
+            <li><a href="logout.php">Sair</a></li>
           </ul>
       </li>
     </div><!-- /.navbar-collapse -->
