@@ -3,7 +3,11 @@
 include "cabecalho.php";
 
 $id = $_SESSION['id'];
-$pacote = $_POST['pacote_opcao'];
+if (isset($_GET['po'])) {
+    $pacote = $_GET['po'];
+}else{
+    $pacote = $_POST['pacote_opcao'];
+}
 
 if (isset($_GET['add'])) {
     $dt_passeio = $_POST['dt_passeio'];
@@ -100,7 +104,7 @@ if (isset($_GET['add'])) {
                     <button type="submit" class="btn btn-success glyphicon glyphicon-plus"></button>
                 </div> <br>
                 <?php
-                    $sqlConsultaPacote = "SELECT id, dt_passeio, hora_inicio, hora_fim, nome FROM pacote WHERE id_usuario = $id and ativo = 1";
+                    $sqlConsultaPacote = "SELECT id, dt_passeio, hora_inicio, hora_fim, nome FROM pacote WHERE id_usuario = $id and ativo = 1 ORDER BY nome";
                     $resultadoConsultaPacote = mysqli_query($conn,$sqlConsultaPacote);
                     $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
                 ?>
@@ -134,7 +138,7 @@ if (isset($_GET['add'])) {
                                     <td>$hora_inicio</td>
                                     <td>$hora_fim</td>
                                     <td>$nomePacote</td>
-                                    <td align='center'><a href='http://www.petline.com.br/deleta_dia.php?id=$id' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></a></td>
+                                    <td align='center'><a href='http://www.petline.com.br/deleta_dia.php?id=$idPacote&po=$pacote' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></a></td>
                                     </tr>";
                             }
                         }else{
