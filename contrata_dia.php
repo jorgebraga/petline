@@ -137,9 +137,9 @@ if (isset($_GET['add'])) {
                                     <td>$dt_passeio</td>
                                     <td>$hora_inicio</td>
                                     <td>$hora_fim</td>
-                                    <td>$nomePacote</td>
-                                    <td align='center'><a href='http://www.petline.com.br/deleta_dia.php?id=$idPacote&po=$pacote' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></a></td>
-                                    </tr>";
+                                    <td>$nomePacote</td>";?>
+                                    <td width=10% align=center><a href="http://www.petline.com.br/consulta/deleta_usuario.php" onclick="if(confirm('Tem certeza que deseja excluir o dia?')) <?php echo "window.location.href = 'http://www.petline.com.br/deleta_dia.php?id=$idPacote&po=$pacote';" ?> ; return false" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                    <?php echo "</tr>";
                             }
                         }else{
                             echo "<h4>Não existem dias selecionados</h4>";
