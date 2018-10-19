@@ -23,8 +23,20 @@ if (isset($_GET['add'])) {
     if ($contatdorContaDias == 0) {
         $total = 0;
     }else{
+
         while ($linhaContaDias = $resultadoContaDias -> fetch_array(MYSQLI_ASSOC)) {
             $total = $linhaContaDias['total'];
+
+            $sqlVerificaPacoteAtual = "SELECT nome FROM pacote WHERE ativo = 1 and id_usuario = $id GROUP BY nome";
+            $resultadoVerificaPacoteAtual = mysqli_query($conn, $sqlVerificaPacoteAtual);
+
+            while ($linhaVerificaPacoteAtual = $resultadoVerificaPacoteAtual -> fetch_array(MYSQLI_ASSOC)) {
+                $pacoteAtual = $linhaVerificaPacoteAtual['nome'];
+            }
+
+            if ($pacote != $pacoteAtual) {
+                $pacote = 'INVALIDO';
+            }
         }
     }
     switch ($pacote) {
@@ -72,6 +84,11 @@ if (isset($_GET['add'])) {
                 echo "alert('A quantidade de passeios do seu pacote foi excedida!');"; 
                 echo '</script>';
             }
+            break;
+        case 'INVALIDO':
+            echo '<script type="text/javascript">'; 
+            echo "alert('Já existe um pacote ativo em seu nome!');"; 
+            echo '</script>';
             break;
     }
 }
