@@ -47,7 +47,7 @@ $id = $_SESSION['id'];
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>      
                   <li><a href='#'>Agenda</a></li>
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Consulta Pacote</a></li>
+                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -63,7 +63,7 @@ $id = $_SESSION['id'];
                 echo "
                 <ul class='dropdown-menu'>
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>    
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Consulta Pacote</a></li>
+                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
                 break;
