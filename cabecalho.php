@@ -46,7 +46,7 @@ $id = $_SESSION['id'];
                 <ul class='dropdown-menu'>
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>      
-                  <li><a href='#'>Agenda</a></li>
+                  <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
@@ -55,7 +55,7 @@ $id = $_SESSION['id'];
               case 'pas':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='#'>Agenda</a></li>
+                  <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
                 </ul>";
                 break;
