@@ -60,8 +60,12 @@ $id = $_SESSION['id'];
 >>>>>>> Estilo pagina login v1
 >>>>>>> Estilo pagina login v1
                   <li><a href='#'>Agenda</a></li>
+<<<<<<< HEAD
                   <li><a href='#'>Consulta Pacote</a></li>
 >>>>>>> Estilo pagina login v1
+=======
+                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
+>>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -79,6 +83,7 @@ $id = $_SESSION['id'];
 <<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>    
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
 =======
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Consulta Pacote</a></li>
@@ -87,6 +92,9 @@ $id = $_SESSION['id'];
                   <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
                   <li><a href='#'>Consulta Pacote</a></li>
 >>>>>>> Estilo pagina login v1
+=======
+                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
+>>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
                 break;

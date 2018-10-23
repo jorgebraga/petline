@@ -2,17 +2,32 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+<<<<<<< HEAD
 #secsobre{
     
     padding: 10px;
 }
 
+=======
+#secsobre{    
+    padding: 10px;
+}
+
+#secpacote{
+    background-color: rgb(225, 240, 221);
+}
+
+>>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
 #imgsobre{
     width: 45em;
     height: 30em;
 }
 
+<<<<<<< HEAD
 #imglogotop{
+=======
+#imglogotop{ /*teste*/
+>>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
     background-color: rgb(225, 240, 221);
 }
 
