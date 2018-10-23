@@ -8,16 +8,16 @@ $id = $_SESSION['id'];
 
 <html>
     <head>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/petline.css">
+        <link rel="stylesheet" href="http://www.petline.com.br/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://www.petline.com.br/css/petline.css">
 
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="js/valida_form.js?51"></script>
+        <script src="http://www.petline.com.br/js/valida_form.js?51"></script>
 
         <!-- Latest compiled JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
     </head>
 <body>
 
@@ -31,7 +31,7 @@ $id = $_SESSION['id'];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Inicio</a>
+      <a class="navbar-brand" href="http://www.petline.com.br/index.php">Inicio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,28 +44,10 @@ $id = $_SESSION['id'];
               case 'adm':
                 echo "
                 <ul class='dropdown-menu'>
-<<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>      
-<<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
-=======
-                  <li><a href='consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
-=======
-=======
-                  <li><a href='consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
->>>>>>> Estilo pagina login v1
->>>>>>> Estilo pagina login v1
-                  <li><a href='#'>Agenda</a></li>
-<<<<<<< HEAD
-                  <li><a href='#'>Consulta Pacote</a></li>
->>>>>>> Estilo pagina login v1
-=======
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
->>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -80,21 +62,8 @@ $id = $_SESSION['id'];
               case 'cli':
                 echo "
                 <ul class='dropdown-menu'>
-<<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>    
-<<<<<<< HEAD
-<<<<<<< HEAD
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
-=======
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Consulta Pacote</a></li>
->>>>>>> Estilo pagina login v1
-=======
-                  <li><a href='cadastro_pet.php'>Cadastra PET</a></li>
-                  <li><a href='#'>Consulta Pacote</a></li>
->>>>>>> Estilo pagina login v1
-=======
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
->>>>>>> 0826557062b10d6277d00ccb3ce69a6f2e52caba
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
                 break;
@@ -117,7 +86,6 @@ $id = $_SESSION['id'];
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
             <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
-            <li><a href="logout.php">Sair</a></li>
           </ul>
       </li>
     </div><!-- /.navbar-collapse -->
