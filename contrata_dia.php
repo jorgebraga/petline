@@ -41,7 +41,7 @@ if (isset($_GET['add'])) {
     }
     switch ($pacote) {
         case 'LINE_BASIC':
-            if ($total < 4) {
+            if ($total < 8) {
 
                 if (!mysqli_query($conn,$sqlAdicionaDia)) {
                     echo '<script type="text/javascript">'; 

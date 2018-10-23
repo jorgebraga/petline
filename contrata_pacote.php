@@ -21,7 +21,7 @@ include "cabecalho.php"
                         <tr>
                             <td align="center"><input type="radio" name="pacote_opcao" value="LINE_BASIC" checked></td>
                             <td>Line Basic</td>
-                            <td>É o pacote mais básico! Contém 4 passeios que podem ser distribuídos durante o mês vigente.</td>
+                            <td>É o pacote mais básico! Contém 8 passeios que podem ser distribuídos durante o mês vigente.</td>
                             <td>R$ 339,72</td>
                         </tr>
                         <tr>
