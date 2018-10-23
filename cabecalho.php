@@ -116,11 +116,8 @@ $id = $_SESSION['id'];
             <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
-<<<<<<< HEAD
             <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
-=======
             <li><a href="logout.php">Sair</a></li>
->>>>>>> Estilo pagina login v1
           </ul>
       </li>
     </div><!-- /.navbar-collapse -->
