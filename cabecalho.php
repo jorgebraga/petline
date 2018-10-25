@@ -14,7 +14,7 @@ $id = $_SESSION['id'];
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-        <script src="http://www.petline.com.br/js/valida_form.js?51"></script>
+        <script src="http://www.petline.com.br/js/valida_form.js?54"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
@@ -45,7 +45,7 @@ $id = $_SESSION['id'];
                 echo "
                 <ul class='dropdown-menu'>
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>      
+                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a></li>      
                   <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
@@ -62,7 +62,7 @@ $id = $_SESSION['id'];
               case 'cli':
                 echo "
                 <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Consulta PET</a></li>    
+                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a></li>    
                   <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
@@ -82,7 +82,7 @@ $id = $_SESSION['id'];
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $nome;?><span class="caret"></span></a>
           <ul class='dropdown-menu'>
-            <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Perfil</a></li>
+            <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Meu Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Sobre</a></li>
             <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>

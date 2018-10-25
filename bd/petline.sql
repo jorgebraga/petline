@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-10-18 19:27:54
+Date: 2018-10-23 13:43:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,19 +21,26 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dt_inicio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `dt_fim` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `dt_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dt_passeio` date NOT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fim` time DEFAULT NULL,
+  `descricao` text,
+  `ativo` char(1) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
+  `dt_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_agenda` (`id`),
   KEY `fk_id_usuario` (`id_usuario`),
   CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of agenda
 -- ----------------------------
+INSERT INTO `agenda` VALUES ('1', '2018-10-23', '08:00:00', '08:30:00', null, '1', '3', '2018-10-22 14:54:21');
+INSERT INTO `agenda` VALUES ('2', '2018-10-24', '09:10:00', '00:00:00', '', '0', '3', '2018-10-22 14:54:24');
+INSERT INTO `agenda` VALUES ('4', '2018-10-26', '06:00:00', '12:00:00', 'Dias disponÃƒÂ­veis', '1', '3', '2018-10-22 14:54:29');
+INSERT INTO `agenda` VALUES ('7', '2018-10-10', '06:00:00', '18:00:00', 'Estou disponível', '1', '3', '2018-10-22 15:06:08');
 
 -- ----------------------------
 -- Table structure for `conta`
@@ -75,14 +82,14 @@ CREATE TABLE `pacote` (
   KEY `idx_pacote` (`id`),
   KEY `fk_id_usuario_2` (`id_usuario`),
   CONSTRAINT `fk_id_usuario_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pacote
 -- ----------------------------
-INSERT INTO `pacote` VALUES ('20', 'LINE_BASIC', '1', '2018-10-10', '08:08:00', '09:09:00', '2', '2018-10-18 16:47:50', '1');
-INSERT INTO `pacote` VALUES ('21', 'LINE_BASIC', '1', '2018-10-10', '10:09:00', '11:11:00', '2', '2018-10-18 16:48:14', '1');
-INSERT INTO `pacote` VALUES ('22', 'LINE_BASIC', '1', '2018-10-11', '08:08:00', '09:09:00', '2', '2018-10-18 16:48:27', '1');
+INSERT INTO `pacote` VALUES ('2', 'LINE_BASIC', '1', '2018-10-10', '07:18:00', '08:18:00', '2', '2018-10-19 18:56:26', '1');
+INSERT INTO `pacote` VALUES ('3', 'LINE_BASIC', '1', '2018-12-12', '05:05:00', '05:05:00', '2', '2018-10-19 18:56:37', '1');
+INSERT INTO `pacote` VALUES ('4', 'LINE_BASIC', '1', '2018-10-23', '10:00:00', '11:00:00', '2', '2018-10-22 21:04:25', '1');
 
 -- ----------------------------
 -- Table structure for `pesquisa`
@@ -94,7 +101,7 @@ CREATE TABLE `pesquisa` (
   `nota` varchar(20) NOT NULL,
   `dt_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `idx_pesquisa` (`id`),
+  KEY `idx_pesquisa` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -128,7 +135,7 @@ CREATE TABLE `pet` (
 INSERT INTO `pet` VALUES ('1', 'Dick 2', 'Labrador 3', '15', 'Preto e branco', '2018-10-16 10:18:36', '2018-10-16 13:42:02', 'Ele é um cachorro e bonito', '1', '1');
 INSERT INTO `pet` VALUES ('2', 'Dick Vigarista', 'Labrador', '50', 'Preto e branco', '2015-10-10 00:00:00', '2018-10-15 14:05:14', 'Ele é um cachorro', '1', '1');
 INSERT INTO `pet` VALUES ('4', 'Nina', 'vira-lata', '12', 'preta', '2018-10-15 21:38:23', '2018-10-16 13:36:20', 'É uma cachorro linda', '2', '1');
-INSERT INTO `pet` VALUES ('5', 'Nina', 'poodle', '15', 'preta', '2018-10-15 21:52:11', '2018-10-15 21:25:24', 'Cachorra', '2', '1');
+INSERT INTO `pet` VALUES ('5', 'Nina', 'poodle', '15', 'preta', '2018-10-15 21:52:11', '2018-10-22 21:02:44', 'Cachorra', '2', '1');
 
 -- ----------------------------
 -- Table structure for `usuario`

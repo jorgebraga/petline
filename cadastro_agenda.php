@@ -74,7 +74,7 @@ if (isset($_GET['add'])) {
                                 $dt_passeio = $linhaConsultaDia['dt_passeio'];
                                 $hora_inicio = $linhaConsultaDia['hora_inicio'];
                                 $hora_fim = $linhaConsultaDia['hora_fim'];
-                                $descricao = utf8_decode($linhaConsultaDia['descricao']);
+                                $descricao = utf8_encode($linhaConsultaDia['descricao']);
                                 $id_agenda = $linhaConsultaDia['id'];
 
                                 echo " <tr>

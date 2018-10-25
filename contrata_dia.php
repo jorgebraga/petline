@@ -121,9 +121,10 @@ if (isset($_GET['add'])) {
                     <button type="submit" class="btn btn-success glyphicon glyphicon-plus"></button>
                 </div> <br>
                 <?php
-                    $sqlConsultaPacote = "SELECT id, dt_passeio, hora_inicio, hora_fim, nome FROM pacote WHERE id_usuario = $id and ativo = 1 ORDER BY nome";
+                    $sqlConsultaPacote = "SELECT id, dt_passeio, hora_inicio, hora_fim, nome, quantidade_passeio FROM pacote WHERE id_usuario = $id and ativo = 1 ORDER BY nome";
                     $resultadoConsultaPacote = mysqli_query($conn,$sqlConsultaPacote);
                     $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
+                    $quantidadePasseio = 0;
                 ?>
                 <div class="panel panel-default col-md-12">
                     <div class="panel-heading">Passeios Ativos</div>
@@ -148,6 +149,8 @@ if (isset($_GET['add'])) {
                                 $hora_fim = $linhaConsultaPet['hora_fim'];
                                 $nomePacote = $linhaConsultaPet['nome'];
                                 $idPacote = $linhaConsultaPet['id'];
+                                $quantidade_passeio = $linhaConsultaPet['quantidade_passeio'];
+                                $quantidadePasseio = $quantidadePasseio + $quantidade_passeio;
 
                                 echo " <tr>
                                     <th></th>
@@ -165,13 +168,13 @@ if (isset($_GET['add'])) {
                     </tbody>
                 </table>
                 </div>
-
+                <input type="hidden" name="quantidade" id="quantidade" value=<?php echo $quantidadePasseio; ?>>
                 <div class="col-md-6" align="left">
                     <a href="http://www.petline.com.br/contrata_pacote.php" class="btn btn-primary">Voltar</a>
                 </div>
 
                 <div class="col-md-6" align="right">
-                    <a href="http://www.petline.com.br/lista_passeador.php" class="btn btn-primary" id="lista_passeador">Avançar</a>
+                    <a href="http://www.petline.com.br/lista_passeador.php" class="btn btn-primary" id="lista_passeador" name="lista_passeador">Avançar</a>
                 </div>
             </div>
         </form>

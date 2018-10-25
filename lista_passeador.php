@@ -12,48 +12,54 @@ $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
         <div class="page-header">
             <h2>Passeadores Disponíveis</h2>
         </div>
-        <div class="panel panel-default col-md-12">
+        <div class="panel panel-default col-md-6">
         
             <table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col"></th>
-                    <th scope="col">Data Passeio</th>
-                    <th scope="col">Hora Início</th>
-                    <th scope="col">Hora Fim</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Selecionar</th>
                     </tr>
                 </thead>
                 <tbody>
-            <?php 
+            <?php
 
-            while ($linhaConsultaPacote = $resultadoConsultaPacote -> fetch_array(MYSQLI_ASSOC)) {
-                $dt_passeio = $linhaConsultaPacote['dt_passeio'];
-                $hora_inicio = $linhaConsultaPacote['hora_inicio'];
-                $hora_fim = $linhaConsultaPacote['hora_fim'];
+            $sqlValidaPasseador = "SELECT A.id_usuario FROM pacote P LEFT JOIN agenda A ON (A.dt_passeio = P.dt_passeio) WHERE	A.dt_passeio IS NULL";
+            $resultadoValidaPasseador = mysqli_query($conn,$sqlValidaPasseador);
+            $contadorValidaPasseador = mysqli_num_rows($resultadoValidaPasseador);
 
-                $sqlListaPasseador = "SELECT A.dt_passeio, A.hora_inicio, A.hora_fim, CONCAT(U.nome, ' ', U.sobrenome) AS nome FROM agenda A INNER JOIN usuario U ON (A.id_usuario = U.id AND perfil = 'pas') WHERE A.dt_passeio = '$dt_passeio' AND A.ativo = 1";
-                $resultadoListaPasseador = mysqli_query($conn,$sqlListaPasseador);
-                $contadorListaPasseador = mysqli_num_rows($resultadoListaPasseador);
+            $arrayIndisponiveis = [];
+
+            if ($contadorValidaPasseador > 0) {
+
+                while ($linhaValidaPasseador = $resultadoValidaPasseador -> fetch_array(MYSQLI_ASSOC)) {
+                    array_push($arrayIndisponiveis, $linhaValidaPasseador['id_usuario']);        
+                }
+                echo "<tr><th scope='col' colspan=4 align=center>Não existem passeadores disponíveis</th></tr>";
+            }else{
+
+                $totalArray = count($arrayIndisponiveis);
                 
-                if ($contadorListaPasseador > 0) {
+                if ($totalArray > 0) {
 
-                    while ($linhaListaPasseador = $resultadoListaPasseador -> fetch_array(MYSQLI_ASSOC)) {
-                        $dt_passeio = $linhaListaPasseador['dt_passeio'];
-                        $hora_inicio = $linhaListaPasseador['hora_inicio'];
-                        $hora_fim = $linhaListaPasseador['hora_fim'];
-                        $nome = $linhaListaPasseador['nome'];
+                    $listaPasseadorIndisponivel = implode($arrayIndisponiveis,',');
+                    $sql = "SELECT CONCAT(U.nome, ' ', U.sobrenome) AS nome FROM agenda A INNER JOIN usuario U ON (A.id_usuario = U.id AND U.perfil = 'pas') WHERE A.id_usuario NOT IN ($listaPasseadorIndisponivel) GROUP BY A.id_usuario";
+                    
+                } else {
+                    $sql = "SELECT CONCAT(U.nome, ' ', U.sobrenome) AS nome FROM agenda A INNER JOIN usuario U ON (A.id_usuario = U.id AND U.perfil = 'pas') GROUP BY A.id_usuario";
+                }
 
-                        echo " <tr>
-                        <th></th>
-                        <td>$dt_passeio</td>
-                        <td>$hora_inicio</td>
-                        <td>$hora_fim</td>
-                        <td>$nome</td>";?>
-                        <td width=10% align=center><a href="#" onclick="if(confirm('Tem certeza que deseja contratar este passeador?')) <?php echo "window.location.href = 'http://www.petline.com.br/contrata_passeador.php';" ?> ; return false" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Contratar</a></td>
-                        <?php echo "</tr>";
-                    }
+                $resultadoPasseadorDisponivel = mysqli_query($conn,$sql);
+
+                while ($linhaPasseadorDisponivel = $resultadoPasseadorDisponivel -> fetch_array(MYSQLI_ASSOC)) {
+                    $nome = $linhaPasseadorDisponivel['nome'];
+
+                    echo " <tr>
+                    <th></th>
+                    <td>$nome</td>";?>
+                    <td width=10% align=center><a href="#" onclick="if(confirm('Tem certeza que deseja contratar este passeador?')) <?php echo "window.location.href = 'http://www.petline.com.br/contrata_passeador.php';" ?> ; return false" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Contratar</a></td>
+                    <?php echo "</tr>";
                 }
             }
             ?>                 

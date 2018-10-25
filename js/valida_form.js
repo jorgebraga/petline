@@ -215,4 +215,28 @@ $ (document).ready(function(){
            $("#cadastro_pet").submit();
         }
     })
+
+    $("#lista_passeador").click(function(){
+
+        var total = $("#quantidade").val();
+        var pacote = $("#pacote_opcao").val();
+        
+        if (pacote == "LINE_BASIC" && total < 8) {
+    
+            alert("Você ainda contém passeios para cadastrar!");
+            return false;
+        }
+
+        if (pacote == "RICH_DOG" && total < 12) {
+    
+            alert("Você ainda contém passeios para cadastrar!");
+            return false;
+        }
+
+        if (pacote == "GOLDEN_DOG" && total < 22) {
+    
+            alert("Você ainda contém passeios para cadastrar!");
+            return false;
+        }
+    })
 });
