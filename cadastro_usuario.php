@@ -160,9 +160,11 @@ if (isset($_GET['cod'])) {
 
             <script src='js/valida_form.js?29'></script>
             <script type='text/javascript' src='js/jquery.mask.min.js'></script>
-
+            
             <!-- Latest compiled JavaScript -->
             <script src='js/bootstrap.min.js'></script>
+            <link rel='stylesheet'' href='css/estilos.css'>
+
         </head>
     <body>";
 
@@ -172,16 +174,27 @@ if (isset($_GET['cod'])) {
 }
 ?>
 
+<header>
+    <div id="topo">
+        <center>
+        <img src="img/logo4.png" alt="logo petline" style="width: 15%;" >
+            </center>
+    </div>
+</header>
+
     <div class="container">
 
         <div class="col-md-12">
-
+            
             <div class="page-header">
-                <h2>Cadastre-se</h2>
-            </div>
+                <h2> <span style="font-size: 35; font-family: helvetica; font-weight: 900; color: black">Cadastre-se</span></h2>
+                         </div>
+        
 <?php
+            
     echo "<form action='cadastra_usuario.php?pc=$pc' method='post' name='cadastro_usuario' id='cadastro_usuario'>";
 ?>
+                       
             <div class="form-row">
 
                 <div class="col-md-6">
@@ -222,7 +235,7 @@ if (isset($_GET['cod'])) {
 
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();">
+                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();" placeholder="Somente números">
                     <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
                 </div>
 
@@ -235,7 +248,7 @@ if (isset($_GET['cod'])) {
                     <script type="text/javascript">$("#cep").mask("00000-000");</script>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="rua">Rua</label>
+                    <label for="rua">Endereço</label>
                     <input type="text" name="rua" id="rua"  class="form-control">
                 </div>
                 <div class="form-group col-md-4">
@@ -298,8 +311,7 @@ if (isset($_GET['cod'])) {
             </div>
 
         </form>
-    </div>
-
+            
 <?php
 include "rodape.php";
 ?>
