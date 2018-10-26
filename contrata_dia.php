@@ -14,6 +14,7 @@ if (isset($_GET['add'])) {
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_fim'];
     $pacote = $_POST['pacote_opcao'];
+    $pacoteAtual = $pacote;
 
     $sqlContaDias = "SELECT SUM(quantidade_passeio) as total FROM pacote WHERE nome = '$pacote' AND id_usuario = '$id' and ativo = 1";
     $resultadoContaDias = mysqli_query($conn, $sqlContaDias);
@@ -27,14 +28,14 @@ if (isset($_GET['add'])) {
         while ($linhaContaDias = $resultadoContaDias -> fetch_array(MYSQLI_ASSOC)) {
             $total = $linhaContaDias['total'];
 
-            $sqlVerificaPacoteAtual = "SELECT nome FROM pacote WHERE ativo = 1 and id_usuario = $id GROUP BY nome";
+            $sqlVerificaPacoteAtual = "SELECT nome FROM pacote WHERE ativo = 1 and id_usuario = '$id' GROUP BY nome";
             $resultadoVerificaPacoteAtual = mysqli_query($conn, $sqlVerificaPacoteAtual);
 
             while ($linhaVerificaPacoteAtual = $resultadoVerificaPacoteAtual -> fetch_array(MYSQLI_ASSOC)) {
                 $pacoteAtual = $linhaVerificaPacoteAtual['nome'];
             }
 
-            if ($pacote != $pacoteAtual) {
+            if ($pacote != $pacoteAtual and $pacoteAtual != null) {
                 $pacote = 'INVALIDO';
             }
         }

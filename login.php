@@ -238,7 +238,7 @@
         <div id="rodape">
             <div align="left">
                 <h4>Contato</h4>
-                <p>Email: petline@email.com</p>
+                <p>Email: passeios.petline@gmail.com</p>
             </div>
             <p>Alguns diretos reservados - Petline &copy; - 2018</p>
         </div>               
