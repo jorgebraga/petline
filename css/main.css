@@ -1,0 +1,68 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#secsobre{    
+    padding: 10px;
+}
+
+#secpacote{
+    padding: 10px;
+    background-color: #A4DA99;
+    width: 100%;
+}
+
+#imgsobre{
+  width: 50%;
+    
+}
+
+#login{
+    background-color: #A4DA99;
+}
+
+.flex-container {
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-around;    
+    align-items: center
+    
+  }
+
+#rodape{
+    background-color: #2E5A24;
+    color: aliceblue;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    position: absolute;    
+    margin: 0%;
+}
+
+#accordion{
+    display: none;
+}
+
+@media (max-width: 1250px){
+    #slidepacotes{
+        display: none;
+    }
+    #accordion{
+        display: initial;
+    }
+}
+
+@media (max-width: 1220px){    
+    #conttext{ 
+        width: 100%;        
+    }
+    #secpacote{
+        padding: 10px;
+        background-color: #A4DA99;
+        background-size: 0;
+    }
+    .flex-container {
+        display: flex;    
+        flex-direction: column;
+        align-items: center;
+      }
+}

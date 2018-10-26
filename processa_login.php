@@ -24,10 +24,10 @@ if ($contadorValidaLogin > 0) {
         $_SESSION['pass'] = $pass;
         $_SESSION['perfil'] = $perfil;
     }
-    header("location:http://www.petline.com.br/index.php");
+    header("location:index.php");
 }else {
     session_destroy();
-    header("location:http://www.petline.com.br/login.php?e=1");
+    header("location:login.php?e=1");
 }
 
 ?>
