@@ -84,10 +84,10 @@ $id = $_SESSION['id'];
           <ul class='dropdown-menu'>
             <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Meu Perfil</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Sobre</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
             <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
           </ul>
-      </li>z
+      </li>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
