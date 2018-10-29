@@ -1,0 +1,19 @@
+*{
+   font-family: arial; 
+}    
+p {
+    font-size: 15px;
+}
+
+#bsc{
+    background-color: #a4da99;
+    padding: 20px;
+    
+}
+
+#contato{
+    margin: 5%;
+    color: black;
+    width:100%;
+      
+}
