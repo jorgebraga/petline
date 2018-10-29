@@ -175,7 +175,7 @@ if (isset($_GET['add'])) {
                 </div>
 
                 <div class="col-md-6" align="right">
-                    <a href="http://www.petline.com.br/lista_passeador.php" class="btn btn-primary" id="lista_passeador" name="lista_passeador">Avançar</a>
+                    <a href="http://www.petline.com.br/lista_pet.php" class="btn btn-primary" id="lista_pet" name="lista_pet">Avançar</a>
                 </div>
             </div>
         </form>

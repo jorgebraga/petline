@@ -25,7 +25,7 @@ $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
                 <tbody>
             <?php
 
-            $sqlValidaPasseador = "SELECT A.id_usuario FROM pacote P LEFT JOIN agenda A ON (A.dt_passeio = P.dt_passeio) WHERE	A.dt_passeio IS NULL";
+            $sqlValidaPasseador = "SELECT A.id_usuario FROM pacote P LEFT JOIN agenda A ON (A.dt_passeio = P.dt_passeio) WHERE	P.id_usuario = $id and A.dt_passeio IS NULL";
             $resultadoValidaPasseador = mysqli_query($conn,$sqlValidaPasseador);
             $contadorValidaPasseador = mysqli_num_rows($resultadoValidaPasseador);
 
@@ -57,8 +57,8 @@ $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
 
                     echo " <tr>
                     <th></th>
-                    <td>$nome</td>";?>
-                    <td width=10% align=center><a href="#" onclick="if(confirm('Tem certeza que deseja contratar este passeador?')) <?php echo "window.location.href = 'http://www.petline.com.br/contrata_passeador.php';" ?> ; return false" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Contratar</a></td>
+                    <td width=90%>$nome</td>";?>
+                    <td width=10% align=center><a href="#" onclick="if(confirm('Tem certeza que deseja contratar este passeador?')) <?php echo "window.location.href = 'http://www.petline.com.br/contrata_passeador.php';" ?> ; return false" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a></td>
                     <?php echo "</tr>";
                 }
             }
@@ -68,7 +68,7 @@ $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
         </div>
     </div>
     <div class="col-md-6" align="left">
-        <a href="http://www.petline.com.br/contrata_dia.php" class="btn btn-primary">Voltar</a>
+        <a href="http://www.petline.com.br/lista_pet.php" class="btn btn-primary">Voltar</a>
     </div>
 
     <div class="col-md-6" align="right">
