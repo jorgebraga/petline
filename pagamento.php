@@ -31,9 +31,6 @@
         <!-- submit do form (obrigatório) -->  
         <input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>
     </form>
-    <div class="col-md-6" align="left">
-        <a href="http://www.petline.com.br/lista_passeador.php" class="btn btn-primary">Voltar</a>
-    </div>
 </div>
 
 <?php include "rodape.php"; ?>
