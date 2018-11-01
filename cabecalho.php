@@ -13,8 +13,10 @@ $id = $_SESSION['id'];
 
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
         <script src="http://www.petline.com.br/js/valida_form.js?54"></script>
+        <script src="http://www.petline.com.br/js/jquery.payment.js"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>

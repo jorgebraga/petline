@@ -230,7 +230,6 @@ if (isset($_GET['cod'])) {
                 <div class="col-md-6">
                     <label for="rg">RG</label>
                     <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
-                    <script type="text/javascript">$("#rg").mask("00.000.000-9");</script>
                 </div>
 
                 <div class="col-md-6">
