@@ -51,7 +51,7 @@
                     <a href="#secpacote">Pacotes</a>
                     <a href="#secparceiros">Parceiros</a>
                     <a href="#login">Login</a>
-                    <a href="cadastro_usuario.php?cod">Cadastro</a>
+                    <a href="cadastro_usuario.php?cod">Cadastre-se</a>
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                         <i class="fa fa-bars"></i>
                     </a>

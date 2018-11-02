@@ -49,7 +49,7 @@ $id = $_SESSION['id'];
                   <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
                   <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a></li>      
                   <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
+                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a></li>
                   <li><a href='#'>Histórico Passeador</a></li>
                   <li><a href='#'>Histórico Cliente</a></li>
                 </ul>";
