@@ -27,7 +27,7 @@ include "../cabecalho.php";
 <div class="container">
     <div class="col-md-12">
         <div class="page-header">
-            <h2>Cadastre-se seu PET</h2>
+            <h2>Altere as informações do seu PET</h2>
         </div>
         <?php echo "<form action='http://www.petline.com.br/cadastra_pet.php?cod=$id' method='post' name='cadastro_pet' id='cadastro_pet'>";?>
             <div class="form-row">
@@ -36,28 +36,32 @@ include "../cabecalho.php";
                     <input type="text" class="form-control" name="nome_pet" maxlength="255" id="nome_pet" value='<?php echo $nome; ?>'>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="raca">Raça</label>
                     <input type="text" class="form-control" name="raca" maxlength="255" id="raca" value='<?php echo $raca; ?>'>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-1">
                     <label for="peso">Peso</label>
                     <input type="number" class="form-control" name="peso" maxlength="255" id="peso" value='<?php echo $peso; ?>'>
                 </div>
 
-                <div class="col-md-6">
+                <div class="clearfix"></div>
+
+                <div class="col-md-4">
                     <label for="cor">Cor</label>
                     <input type="text" class="form-control" name="cor" maxlength="255" id="cor" value='<?php echo $cor; ?>'>
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label for="dt_nascimento">Data de Nascimento</label>
                     <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento" value='<?php echo $dt_nascimento; ?>'>
                 </div>
 
+                <div class="clearfix"></div>
+
                 <div class="form-row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                     <label for="descricao_pet">Descrição</label>
                         <p><textarea class="form-control" name="descricao_pet" id="descricao_pet" cols="148" rows="10" ><?php echo $descricao; ?></textarea></p>
                     </div>

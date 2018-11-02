@@ -143,6 +143,24 @@ function vercpf (cpf) {
 
 </script>
 
+<script>
+function teste(e)
+	{
+		var expressao;
+
+		expressao = /[0-9]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+</script>
+
 <?php
 
 $pc = 0;
@@ -199,42 +217,44 @@ if (isset($_GET['cod'])) {
 
                 <div class="col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome">
+                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome" onKeypress="return teste(event);">
                 </div>
 
                 <div class="col-md-6">
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome">
+                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome" onKeypress="return teste(event);">
                 </div>
 
             </div>
 
              <div class="form-group col-md-6">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" onblur="validacaoEmail(event)" maxlength="60" size='65'>
+                <input type="email" class="form-control" name="email" id="email" onblur="validacaoEmail(event)" maxlength="60" size='65' placeholder="exemplo@exemplo.com">
             </div>
 
             <div class="form-group col-md-6">
                 <label for="dt_nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento">
+                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento" min="1950-01-01" max="2018-12-31" required>
             </div>
 
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                <input type="text" class="form-control" name="telefone" maxlength="50" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" placeholder="Apenas Números">
                 <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
             </div>
+
+            <div class="clearfix"></div>
 
             <div class="form-row">
 
                 <div class="col-md-6">
                     <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="20" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
+                    <input type="text" class="form-control" name="rg" maxlength="11" id="rg" onkeydown=validateNumber(event); pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" placeholder="Apenas Números">
                 </div>
 
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();" placeholder="Somente números">
+                    <input type="text" class="form-control" name="cpf" size="14" maxlength="11" id="cpf" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="VerificaCPF();" placeholder="Apenas Números">
                     <script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
                 </div>
 
@@ -243,42 +263,44 @@ if (isset($_GET['cod'])) {
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label for="cep">CEP</label>
-                    <input type="text" name="cep" id="cep" value="" size="10" maxlength="9"  class="form-control" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="pesquisacep(this.value);">
+                    <input type="text" name="cep" id="cep" value="" size="10" maxlength="9"  class="form-control" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" onblur="pesquisacep(this.value);" placeholder="Apenas Números">
                     <script type="text/javascript">$("#cep").mask("00000-000");</script>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="rua">Endereço</label>
-                    <input type="text" name="rua" id="rua"  class="form-control">
+                    <input type="text" name="rua" id="rua"  class="form-control" placeholder="Preenchimento Automático">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro"  class="form-control">
+                    <input type="text" name="bairro" id="bairro"  class="form-control" placeholder="Preenchimento Automático">
                 </div>
             </div>
 
             <div class="form-group col-md-8">
                 <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" name="cidade" maxlength="255" id="cidade">
+                <input type="text" class="form-control" name="cidade" maxlength="255" id="cidade" placeholder="Preenchimento Automático">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="uf">Estado</label>
-                <input type="text" class="form-control" name="uf" maxlength="2" id="uf">
-            </div>
-
-            <div class="form-group col-md-12">
-                <label for="login">Login</label>
-                <input type="text" class="form-control" name="login" maxlength="25" id="login">
+                <input type="text" class="form-control" name="uf" maxlength="2" id="uf" placeholder="Preenchimento Automático">
             </div>
 
             <div class="form-group col-md-6">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" name="login" maxlength="25" id="login" placeholder="Apenas letras e números">
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group col-md-6">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" name="senha" maxlength="50" id="senha">
+                <input type="password" class="form-control" name="senha" maxlength="50" id="senha" placeholder="Apenas letras e números">
             </div>
 
             <div class="form-group col-md-6">
                 <label for="senha2">Confirme Sua Senha</label>
-                <input type="password" class="form-control" name="senha2" maxlength="50" id="senha2">
+                <input type="password" class="form-control" name="senha2" maxlength="50" id="senha2" placeholder="Apenas letras e números">
             </div>
 
             <div class="form-group col-md-12">

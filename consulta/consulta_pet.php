@@ -63,7 +63,7 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
                     }
                 }
             }else{
-                echo "<h4>Não existem usuario cadastrados</h4>";
+                echo "<h4>Não existem pets cadastrados</h4>";
             }
         ?>
     </table>
