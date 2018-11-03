@@ -9,7 +9,7 @@ include "cabecalho.php"
         </div>
         <form action="contrata_dia.php" method="post" name="contrata_pacote" id="contrata_pacote">
             <div class="form-row">
-                <div class="col-md-12 panel panel-default">
+                <div class="panel panel-default table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>

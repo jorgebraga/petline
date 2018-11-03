@@ -39,7 +39,7 @@ if (isset($_GET['add'])) {
                     <input type="time" class="form-control" name="hora_fim" id="hora_fim">
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-5">
                     <label for="descricao_agenda">Descrição</label>
                     <input type="text" class="form-control" name="descricao_agenda" id="descricao_agenda">
                 </div>
@@ -53,9 +53,8 @@ if (isset($_GET['add'])) {
                     $resultadoConsultaDia = mysqli_query($conn,$sqlConsultaDia);
                     $contadorConsultaDia = mysqli_num_rows($resultadoConsultaDia);
                 ?>
-                <div class="panel panel-default col-md-12">
-                    <div class="panel-heading">Agenda Disponível</div>
-                <table class="table table-striped">
+                <div class="table-responsive panel panel-default col-md-12">
+                <table width=100% class="table table-striped">
                     <thead>
                         <tr>
                         <th scope="col"></th>
@@ -66,7 +65,6 @@ if (isset($_GET['add'])) {
                         <th scope="col">Deletar</th>
                         </tr>
                     </thead>
-                    <tbody>
                     <?php 
                         if ($contadorConsultaDia > 0) {
 
@@ -89,8 +87,7 @@ if (isset($_GET['add'])) {
                         }else{
                             echo "<h4>Não existem dias selecionados</h4>";
                         }
-                    ?>                        
-                    </tbody>
+                    ?>
                 </table>
                 </div>
 

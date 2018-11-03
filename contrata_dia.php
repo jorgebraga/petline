@@ -127,8 +127,8 @@ if (isset($_GET['add'])) {
                     $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
                     $quantidadePasseio = 0;
                 ?>
-                <div class="panel panel-default col-md-12">
-                    <div class="panel-heading">Passeios Ativos</div>
+                <div class="table-responsive panel panel-default col-md-12">
+                    <div class="panel-heading" align="center">Passeios Ativos</div>
                 <table class="table table-striped">
                     <thead>
                         <tr>

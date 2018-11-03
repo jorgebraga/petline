@@ -32,7 +32,7 @@ $id = $_SESSION['id'];
     <div class="sidebar-header">
       <img src="../img/logo4.png" alt="" style="width:100%;">      
     </div>
-
+    
     <ul class="list-unstyled components">
       <p>Olá, <?php echo $nome;?></p> <!--Nome do usuario logado-->
       <li class="active">

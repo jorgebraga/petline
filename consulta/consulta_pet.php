@@ -16,27 +16,28 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
     <h3>Consulta Pet</h3>
     <h4>Pesquise por uma palavra chave ou selecione o PET da lista</h4>
     <br>
-    
-    <div align="center">
-        <p>Para adicionar um novo PET <a href="http://www.petline.com.br/cadastro_pet.php">Clique Aqui</a></p>
-    </div>
 
-    <div style="margin: auto; max-width: 300px;">
+    <div style="margin: auto; max-width: 300px;" align="left">
         <table>
             <tr>
-                <td>
-            </tr>
+                <td><input type="text" class="form-control" id="busca" name="busca"></td>
+                <td><button type="button" class="btn btn-primary" id="busca">
+                    <span class="glyphicon glyphicon-search"> </span>
+                </button></td>
+            <tr>
         </table>
     </div>
 
-    <div style="margin: auto; max-width: 800px;">
-    <table width=100%>
+    <div style="margin: auto; max-width: 800px;" class="table-responsive panel panel-default">
+    <table width=100% class="table table-striped">
+    <thead>
         <tr>
-            <th>Nome</th>
-            <th>Raca</th>
-            <th>Dono</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Raca</th>
+            <th scope="col">Dono</th>
             <th></th>
         </tr>
+    </thead>
         <?php
             if ($contadorConsultaPet > 0) {
                 while ($linhaPet = $resultadoConsultaPet -> fetch_array(MYSQLI_ASSOC)) {
@@ -62,10 +63,13 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
                     }
                 }
             }else{
-                echo "<h4>Não existem usuario cadastrados</h4>";
+                echo "<h4>Não existem pets cadastrados</h4>";
             }
         ?>
     </table>
+    <div align="center">
+        <h4>Para adicionar um novo PET <a href="http://www.petline.com.br/cadastro_pet.php">Clique Aqui</a></h4>
+    </div>
     </div>
 
 <?php

@@ -10,11 +10,11 @@ $resultadoConsultaPacote = mysqli_query($conn,$sqlConsultaPacote);
 $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
 ?>
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="page-header">
             <h2>Passeadores Disponíveis</h2>
         </div>
-        <div class="panel panel-default col-md-6">
+        <div class="table-responsive panel panel-default">
         
             <table class="table table-striped">
                 <thead>
@@ -70,7 +70,7 @@ $contadorConsultaPacote = mysqli_num_rows($resultadoConsultaPacote);
             </table>
         </div>
     </div>
-    <div class="col-md-6" align="left">
+    <div class="col-md-12" align="left">
         <a href="http://www.petline.com.br/lista_pet.php" class="btn btn-primary">Voltar</a>
     </div>
 </div>

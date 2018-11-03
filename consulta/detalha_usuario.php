@@ -97,6 +97,24 @@
 
 </script>
 
+<script>
+function teste(e)
+	{
+		var expressao;
+
+		expressao = /[0-9]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+</script>
+
 <?php
     include "../cabecalho.php";
 
@@ -152,12 +170,12 @@
 
                 <div class="col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome" value='<?php echo $nome; ?>'>
+                    <input type="text" class="form-control" name="nome" maxlength="255" id="nome" onKeypress="return teste(event);" value='<?php echo $nome; ?>'>
                 </div>
 
                 <div class="col-md-6">
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome" value='<?php echo $sobrenome; ?>'>
+                    <input type="text" class="form-control" name="sobrenome" maxlength="255" id="sobrenome" onKeypress="return teste(event);" value='<?php echo $sobrenome; ?>'>
                 </div>
 
             </div>
@@ -169,14 +187,16 @@
 
             <div class="form-group col-md-6">
                 <label for="dt_nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento" value=<?php echo $dt_nascimento; ?>>
+                <input type="date" class="form-control" name="dt_nascimento" id="dt_nascimento" min="1950-01-01" max="2018-12-31" value=<?php echo $dt_nascimento; ?>>
             </div>
 
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label>
                 <input type="text" class="form-control" name="telefone" maxlength="15" id="telefone" onkeydown="validateNumber(event);" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" value='<?php echo $telefone; ?>'>
                 <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
             </div>
+
+            <div class="clearfix"></div>
 
             <div class="form-row">
                 <div class="form-group col-md-2">
