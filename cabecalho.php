@@ -8,88 +8,115 @@ $id = $_SESSION['id'];
 
 <html>
     <head>
-        <link rel="stylesheet" href="http://www.petline.com.br/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://www.petline.com.br/css/petline.css">
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+        <link rel="stylesheet" href="../css/petline.css">        
 
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
         <script src="http://www.petline.com.br/js/valida_form.js?54"></script>
+
         <script src="http://www.petline.com.br/js/jquery.payment.js"></script>
 
         <!-- Latest compiled JavaScript -->
-        <script src="http://www.petline.com.br/js/bootstrap.min.js"></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script> 
     </head>
-<body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="http://www.petline.com.br/index.php">Inicio</a>
+<body> <!--Inicio-->
+<div class="background-image"></div>
+<div class="wrapper">
+  <!-- Sidebar Holder -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <img src="../img/logo4.png" alt="" style="width:100%;">      
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ações <span class="caret"></span></a>
-          <?php
-            switch ($perfil) {
-              case 'adm':
-                echo "
-                <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a></li>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a></li>      
-                  <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
-                  <li><a href='#'>Histórico Passeador</a></li>
-                  <li><a href='#'>Histórico Cliente</a></li>
-                </ul>";
+    <ul class="list-unstyled components">
+      <p>Olá, <?php echo $nome;?></p> <!--Nome do usuario logado-->
+      <li class="active">
+        <a href="http://www.petline.com.br/index.php">Inicio</a>
+      </li>
+      <!--Inicio validação para o menu, de acordo com o tipo de login-->
+      <?php
+        switch ($perfil) {
+            case 'adm':
+              echo "
+                  <li>
+                    <a href='http://www.petline.com.br/consulta/consulta_usuario.php'>Consulta Usuário</a>
+
+                    <a href='#pageSubmenu' data-toggle='collapse' aria-expanded='false'>Históricos</a>
+                    <ul class='collapse list-unstyled' id='pageSubmenu'>
+                      <li><a href='#'>Histórico Passeador</a></li>
+                      <li><a href='#'>Histórico Cliente</a></li>          
+                    </ul>
+                  </li>
+                  <li>
+                    <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a>
+                  </li>
+                  <li>
+                    <a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a>
+                  </li>
+                  <li>
+                    <a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a>
+                  </li>";
                 break;
+                
               case 'pas':
                 echo "
-                <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a></li>
-                  <li><a href='#'>Histórico Passeador</a></li>
-                </ul>";
-                break;
-              case 'cli':
-                echo "
-                <ul class='dropdown-menu'>
-                  <li><a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a></li>    
-                  <li><a href='http://www.petline.com.br/contrata_pacote.php'>Contrata Pacote</a></li>
-                  <li><a href='#'>Histórico Cliente</a></li>
-                </ul>";
-                break;
-          }
-        ?>
-      </li>
-    </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Pesquisar">
-        </div>
-        <button type="button" class="btn btn-primary" id="pesquisa"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $nome;?><span class="caret"></span></a>
-          <ul class='dropdown-menu'>
-            <li><a href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Meu Perfil</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
-          </ul>
-      </li>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+                  <li>
+                    <a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a>
+                  </li>
+                  <li>
+                    <a href='#'>Histórico  Passeador</a>
+                  </li>";
+                  break;
+
+                case 'cli':
+                  echo "
+                      <li>
+                        <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a>
+                      </li>
+                      <li>
+                        <a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a>
+                      </li>
+                      <li>
+                        <a href='#'>Histórico  Cliente</a>
+                      </li>
+                    ";
+                    break;
+            }
+      ?>    
+    <!--Fim validação para o menu, de acordo com o tipo de login-->
+        
+  </ul>
 </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+    <!--Menu topo-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+        </div>
+        <!--Links do menu topo-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="tmenu" href="http://www.petline.com.br/index.php">Inicio</a></li>
+            <li><a id="tmenu" href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Meu Perfil</a></li>
+            <li><a id="tmenu" href="sobre.html">Sobre</a></li>
+            <li><a id="tmenu" href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   <!--Fim menu topo-->
+
+   <script  src="../js/menuindex.js"></script>
