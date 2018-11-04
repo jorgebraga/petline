@@ -249,7 +249,7 @@ function teste(e)
             <div class="form-row">
 
                 <div class="col-md-6" align="left">
-                    <a href="http://www.petline.com.br/index.php" class="btn btn-danger">Cancelar</a>
+                    <a href="../index.php" class="btn btn-danger">Cancelar</a>
                 </div>
 
                 <div class="col-md-6" align="right">
