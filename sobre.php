@@ -1,7 +1,23 @@
+<<<<<<< HEAD:sobre.php
 <?php include "cabecalho.php";?>
+=======
+<?php
+include "cabecalho.php";
+?>
+
+<body>
+  <header>
+    <div id=”cabecalho”>
+      <div id="topo">
+        <img src="img/backlogo.jpg" alt="" style="width:100%;">
+      </div>
+      
+    </div>
+</header>
+>>>>>>> ajuste sobre:sobre.php
 
 <!-- Seção de Sobre-->
-<main>
+<main class="container">
   <center>
     <div id="quemSomos"class="col-sm-3 col-md-10">
       <h3>Sobre a PETLINE</h3>
@@ -19,7 +35,7 @@
 <!-- FIM Seção de Sobre-->
 <div class="clearfix"></div>
 <!-- Seção de Diferencial-->
-<section>
+<section class="container">
     <div id="diferencial">
     <center>
       <h3>Diferencial PETLINE</h3>
@@ -36,7 +52,7 @@
 <!-- FIM Seção de Diferencial-->
 
 <!-- Seção de M.V.V-->  
-<section id="bsc">
+<section id="bsc" class="container">
   <div class="container">
     <div class="row">
       <div class="col-sm-4" id="missao">
@@ -68,7 +84,7 @@
 
   <!--Seção de contato-->
   
-  <section id="contatos">  
+  <section id="contatos" class="container">  
     <div aling="center">
       <div class="col-sm-11" id="contato">
         <h2>Contato</h2>
@@ -83,5 +99,10 @@
   <!-- FIM Seção de contato-->
 
   <!-- FIM Seção de rodapé-->
+<<<<<<< HEAD:sobre.php
 <?php include "rodape.php"; ?>
   <!-- FIM Seção de rodapé-->
+=======
+  
+  
+>>>>>>> ajuste sobre:sobre.php
