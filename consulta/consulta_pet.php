@@ -12,7 +12,7 @@ if ($id == 1) {
 $resultadoConsultaPet = mysqli_query($conn,$sqlConsultaPet);
 $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
 ?>
-
+<div id="conteudo">
     <h3>Consulta Pet</h3>
     <h4>Pesquise por uma palavra chave ou selecione o PET da lista</h4>
     <br>
@@ -71,6 +71,7 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
         <h4>Para adicionar um novo PET <a href="http://www.petline.com.br/cadastro_pet.php">Clique Aqui</a></h4>
     </div>
     </div>
+</div>
 
 <?php
 include "../rodape.php";

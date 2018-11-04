@@ -13,6 +13,7 @@ $sqlConsultaPet = "SELECT id, nome, raca, peso, descricao FROM pet WHERE id_usua
 $resultadoConsultaPet = mysqli_query($conn,$sqlConsultaPet);
 $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
 ?>
+<div id="conteudo">
 <div class="container">
     <div class="col-md-12">
         <div class="page-header">
@@ -59,5 +60,6 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
     <div class="col-md-6" align="left">
         <a href="http://www.petline.com.br/contrata_dia.php" class="btn btn-primary">Voltar</a>
     </div>
+</div>
 </div>
 <?php include "rodape.php"; ?>
