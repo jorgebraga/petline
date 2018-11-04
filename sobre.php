@@ -1,6 +1,3 @@
-<<<<<<< HEAD:sobre.php
-<?php include "cabecalho.php";?>
-=======
 <?php
 include "cabecalho.php";
 ?>
@@ -14,7 +11,6 @@ include "cabecalho.php";
       
     </div>
 </header>
->>>>>>> ajuste sobre:sobre.php
 
 <!-- Seção de Sobre-->
 <main class="container">
