@@ -99,10 +99,5 @@ include "cabecalho.php";
   <!-- FIM Seção de contato-->
 
   <!-- FIM Seção de rodapé-->
-<<<<<<< HEAD:sobre.php
-<?php include "rodape.php"; ?>
-  <!-- FIM Seção de rodapé-->
-=======
   
   
->>>>>>> ajuste sobre:sobre.php
