@@ -10,7 +10,8 @@ $id = $_SESSION['id'];
     <head>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 
-        <link rel="stylesheet" href="../css/petline.css">        
+        <link rel="stylesheet" href="../css/petline.css">
+        <link rel="stylesheet" href="../css/bootstrap-social.css">          
 
         <!-- jQuery library -->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -53,7 +54,7 @@ $id = $_SESSION['id'];
                     </ul>
                   </li>
                   <li>
-                    <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a>
+                    <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meus Pets</a>
                   </li>
                   <li>
                     <a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a>
@@ -76,7 +77,7 @@ $id = $_SESSION['id'];
                 case 'cli':
                   echo "
                       <li>
-                        <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meu Pet</a>
+                        <a href='http://www.petline.com.br/consulta/consulta_pet.php'>Meus Pets</a>
                       </li>
                       <li>
                         <a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a>
@@ -111,7 +112,7 @@ $id = $_SESSION['id'];
           <ul class="nav navbar-nav navbar-right">
             <li><a id="tmenu" href="http://www.petline.com.br/index.php">Inicio</a></li>
             <li><a id="tmenu" href="http://www.petline.com.br/consulta/detalha_usuario.php?id=<?php echo $id; ?>">Meu Perfil</a></li>
-            <li><a id="tmenu" href="sobre.html">Sobre</a></li>
+            <li><a id="tmenu" href="http://www.petline.com.br/sobre.php">Sobre</a></li>
             <li><a id="tmenu" href="#" onclick="if(confirm('Tem certeza que deseja sair?')) <?php echo "window.location.href = 'http://www.petline.com.br/logout.php';" ?> ; return false"<span>Sair</span></a></li>
           </ul>
         </div>

@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <title>PetLine</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
-  
-    
-<body>
-  <header>
-    <div id=”cabecalho”>
-      <div id="topo">
-        <img src="img/backlogo.jpg" alt="" style="width:100%;">
-      </div>
-      
-    </div>
-</header>
+<?php include "cabecalho.php";?>
 
 <!-- Seção de Sobre-->
 <main>
@@ -41,7 +17,7 @@
   </center>
 </main>
 <!-- FIM Seção de Sobre-->
-
+<div class="clearfix"></div>
 <!-- Seção de Diferencial-->
 <section>
     <div id="diferencial">
@@ -98,7 +74,7 @@
         <h2>Contato</h2>
         <div><i class="fa fa-envelope-square"> E-mail: passeios.petline@gmail.com</i></div>
         <div><i class="fa fa-phone-square"> Telefone:</i></div>
-        <div><i class="fa fa-facebook-square"> Facebook</i></div>
+        <div><i class="btn-facebook"> Facebook</i></div>
         <div><i class="fa fa-twitter-square"> Twitter</i></div>
         <div><i class="fa fa-instagram"> Instagram</i></div>
       </div>
@@ -107,11 +83,5 @@
   <!-- FIM Seção de contato-->
 
   <!-- FIM Seção de rodapé-->
-  <div id="rodape">
-    <center>
-      &copy;2018 PetLine - Todos os direitos reservados.
-    </center>
-  </div>
+<?php include "rodape.php"; ?>
   <!-- FIM Seção de rodapé-->
-</body>
-</html>

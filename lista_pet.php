@@ -60,3 +60,4 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
         <a href="http://www.petline.com.br/contrata_dia.php" class="btn btn-primary">Voltar</a>
     </div>
 </div>
+<?php include "rodape.php"; ?>
