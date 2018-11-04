@@ -94,6 +94,7 @@ if (isset($_GET['add'])) {
     }
 }
 ?>
+<div id="conteudo">
 <div class="container">
     <div class="col-md-12">
         <div class="page-header">
@@ -181,5 +182,5 @@ if (isset($_GET['add'])) {
         </form>
     </div>
 </div>
-
+</div>
 <?php include "rodape.php";?>

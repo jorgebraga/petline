@@ -156,6 +156,7 @@ function teste(e)
     <!-- Latest compiled JavaScript -->
     <script src='http://www.petline.com.br/js/bootstrap.min.js'></script>
 </head>
+<div id="conteudo">
     <div class="container">
 
         <div class="col-md-12">
@@ -260,6 +261,8 @@ function teste(e)
 
         </form>
     </div>
+</div>
+</div>   
 
 <?php
 include "../rodape.php";

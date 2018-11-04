@@ -9,12 +9,20 @@ html, body {height:100%;}
     background-color: black;
     color: white;
     padding: 15px;
-    position:absolute;
-    bottom:-50;
+    position: relative;
+    bottom: 0;
     width:100%;   
     
 }
 
+#conteudo{
+    border: solid #2E5A24 1px;
+    border-radius: 10px;
+    background-color: #A4DA99;
+    padding: 12px;
+    opacity: 0.9;    
+    
+}
 /*Estilo menus topo e lateral*/
 /*
     DEMO STYLE
@@ -51,7 +59,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: black;
 }
 
 #tmenu{

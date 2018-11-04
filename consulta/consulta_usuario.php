@@ -16,7 +16,7 @@ $sqlConsultaUsuario = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, a
 $resultadoConsultaUsuario = mysqli_query($conn,$sqlConsultaUsuario);
 $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
 ?>
-
+<div id="conteudo">
     <h3>Consulta Usuário</h3>
     <h4>Pesquise por uma palavra chave ou selecione o usuario na lista</h4>
     <br>
@@ -106,6 +106,7 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
             </li>
         </ul>
     </nav>
+                </div>    
 <?php
 include "../rodape.php";
 ?>

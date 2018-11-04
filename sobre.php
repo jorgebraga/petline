@@ -1,9 +1,24 @@
-<?php include "cabecalho.php";?>
+<?php
+include "cabecalho.php";
+?>
 
+
+<header>
+    <div id=”cabecalho”>
+      <div id="topo">
+        <img src="img/backlogo.jpg" alt="" style="width:100%;">
+      </div>
+      
+    </div>
+</header>
+<br>
+<div id="conteudo">
 <!-- Seção de Sobre-->
-<main>
-  <center>
+
+<main class="container">
+  
     <div id="quemSomos"class="col-sm-3 col-md-10">
+    <center>
       <h3>Sobre a PETLINE</h3>
       <p align="justify">
         Fundada em 2018, a PETLINE será uma empresa criada por alunos do curso de bacharel em Sistemas de Informação da unidade de Águas Claras - DF.</p>
@@ -18,13 +33,13 @@
 </main>
 <!-- FIM Seção de Sobre-->
 <div class="clearfix"></div>
+<hr>
 <!-- Seção de Diferencial-->
-<section>
+<section class="container">
     <div id="diferencial">
     <center>
       <h3>Diferencial PETLINE</h3>
-    </center>
-    <center>
+    
       <div id="diferencial"class="col-sm-3 col-md-10">
         <P align="justify">
           Por ser uma empresa formada dentro do curso de sistemas de informação, sua estrutura organizacional é totalmente composta por alunos, onde cada aluno é responsável por determinado setor da empresa.
@@ -34,9 +49,9 @@
     </div>
 </section>
 <!-- FIM Seção de Diferencial-->
-
+<hr>
 <!-- Seção de M.V.V-->  
-<section id="bsc">
+<section id="bsc" class="container">
   <div class="container">
     <div class="row">
       <div class="col-sm-4" id="missao">
@@ -48,7 +63,7 @@
 
       <div class="col-sm-4" id="visao">
         <center>
-          <h3 alin="center">Visão</h3>
+          <h3 align="center">Visão</h3>
         </center>
           <p align="justify">Ser em alguns anos, referência e destaque no ramo de passeio de animais domésticos. </p>        
       </div>
@@ -65,10 +80,10 @@
      <br>
 
   <!-- FIM Seção de M.V.V-->
-
+  <hr>
   <!--Seção de contato-->
   
-  <section id="contatos">  
+  <section id="contatos" class="container">  
     <div aling="center">
       <div class="col-sm-11" id="contato">
         <h2>Contato</h2>
@@ -80,8 +95,11 @@
       </div>
     </div>
   </section>
+</div>
   <!-- FIM Seção de contato-->
 
   <!-- FIM Seção de rodapé-->
-<?php include "rodape.php"; ?>
-  <!-- FIM Seção de rodapé-->
+  
+<?php
+include "rodape.php";
+?>
