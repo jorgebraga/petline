@@ -1,7 +1,18 @@
 <?php
 include "../cabecalho.php";
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-$sqlConsultaUsuario = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, ativo, perfil FROM usuario";
+$sqlConsultaUsuarios = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, ativo, perfil FROM usuario";
+$resultadoConsultaUsuarios = mysqli_query($conn,$sqlConsultaUsuarios);
+$contadorConsultaUsuarios = mysqli_num_rows($resultadoConsultaUsuarios);
+
+$quantidade_pg = 5;
+
+$num_pagina = ceil($contadorConsultaUsuarios/$quantidade_pg);
+
+$incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+$sqlConsultaUsuario = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, ativo, perfil FROM usuario LIMIT $incio, $quantidade_pg";
 $resultadoConsultaUsuario = mysqli_query($conn,$sqlConsultaUsuario);
 $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
 ?>
@@ -33,7 +44,7 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
         </thead>
             <?php
                 if ($contadorConsultaUsuario > 0) {
-                    while ($linhaUsuario = $resultadoConsultaUsuario -> fetch_array(MYSQLI_ASSOC)) {
+                    while ($linhaUsuario = mysqli_fetch_assoc($resultadoConsultaUsuario)) {
                         $nome = $linhaUsuario['nome'];
                         $login = $linhaUsuario['login'];
                         $id = $linhaUsuario['id'];
@@ -61,7 +72,40 @@ $contadorConsultaUsuario = mysqli_num_rows($resultadoConsultaUsuario);
             ?>
         </table>
     </div>
-
+    <?php
+        //Verificar a pagina anterior e posterior
+        $pagina_anterior = $pagina - 1;
+        $pagina_posterior = $pagina + 1;
+    ?>
+    <nav class="text-center">
+        <ul class="pagination">
+            <li>
+                <?php
+                if($pagina_anterior != 0){ ?>
+                    <a href="http://www.petline.com.br/consulta/consulta_usuario.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&laquo;</span>
+            <?php }  ?>
+            </li>
+            <?php 
+            //Apresentar a paginacao
+            for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                <li><a href="http://www.petline.com.br/consulta/consulta_usuario.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php } ?>
+            <li>
+                <?php
+                if($pagina_posterior <= $num_pagina){ ?>
+                    <a href="http://www.petline.com.br/consulta/consulta_usuario.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&raquo;</span>
+            <?php }  ?>
+            </li>
+        </ul>
+    </nav>
 <?php
 include "../rodape.php";
 ?>

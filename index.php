@@ -22,8 +22,8 @@ if ($perfil == 'pas') {
     U.id = $id
     AND PE.ativo = 1
     AND P.ativo = 1";
-$resultadoSqlIndexPasseador = mysqli_query($conn,$sqlIndexPasseador);
-$contadorIndexPasseador = mysqli_num_rows($resultadoSqlIndexPasseador);
+    $resultadoSqlIndexPasseador = mysqli_query($conn,$sqlIndexPasseador);
+    $contadorIndexPasseador = mysqli_num_rows($resultadoSqlIndexPasseador);
 ?>
 <div class="container">
     <div class="col-md-12">
@@ -134,7 +134,7 @@ $contadorIndexPasseador = mysqli_num_rows($resultadoSqlIndexPasseador);
                                 </tr>";
                         }
                     }else{
-                        echo "<h4>Não existem PETs cadastrados</h4>";
+                        echo "<h4>Não existem passeios a serem realizados</h4>";
                     }
                 ?>                 
                 </tbody>
@@ -143,8 +143,75 @@ $contadorIndexPasseador = mysqli_num_rows($resultadoSqlIndexPasseador);
         </div>
     </div>
 <?php }else{
+
+        $sqlIndexAdm = "SELECT DISTINCT
+        CONCAT(U.nome,' ',U.sobrenome) as passeador,
+        CONCAT(U1.nome,' ',U1.sobrenome) as cliente,
+        P.dt_passeio,
+        P.hora_inicio,
+        P.hora_fim,
+        PE.nome as nome_pet,
+        P.ativo as passeio_realizado,
+        P.id as id_pacote
+        FROM servico S
+        INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+        INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+        INNER JOIN pacote P ON (P.id_usuario = U1.id)
+        INNER JOIN pet PE ON (PE.id = S.id_pet)
+        WHERE
+        PE.ativo = 1
+        AND P.ativo = 1";
+    $resultadoSqlIndexAdm = mysqli_query($conn,$sqlIndexAdm);
+    $contadorIndexAdm = mysqli_num_rows($resultadoSqlIndexAdm);
+    ?>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Próximos Passeios</h2>
+            </div>
+            <div class="panel panel-default">
+            
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Passeador</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Nome Pet</th>
+                        <th scope="col">Data Passeio</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Termino</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                    if ($contadorIndexAdm > 0) {
+                        while ($linhaIndexAdm = $resultadoSqlIndexAdm -> fetch_array(MYSQLI_ASSOC)) {
+                            $passeador = $linhaIndexAdm['passeador'];
+                            $cliente = $linhaIndexAdm['cliente'];
+                            $nome_pet = $linhaIndexAdm['nome_pet'];
+                            $dt_passeio = $linhaIndexAdm['dt_passeio'];
+                            $hora_inicio = $linhaIndexAdm['hora_inicio'];
+                            $hora_fim = $linhaIndexAdm['hora_fim'];
     
-} ?>
+                            echo "<tr>
+                                <td width=20%>$passeador</td>
+                                <td width=20%>$cliente</td>
+                                <td width=10%>$nome_pet</td>
+                                <td width=10%>$dt_passeio</td>
+                                <td width=10%>$hora_inicio</td>
+                                <td width=10%>$hora_fim</td>
+                                </tr>";
+                        }
+                    }else{
+                        echo "<h4>Não existem passeios a serem realizados</h4>";
+                    }
+                ?>                 
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
 <?php
 include "rodape.php";
