@@ -20,8 +20,9 @@ html, body {height:100%;}
     border-radius: 10px;
     background-color: #A4DA99;
     padding: 12px;
-    opacity: 0.9;    
-    
+    opacity: 0.9;
+    text-align: left;
+    text-emphasis-position: below;
 }
 /*Estilo menus topo e lateral*/
 /*
@@ -277,8 +278,7 @@ a.article, a.article:hover {
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
     }
-
-}
+   
 
 
 
