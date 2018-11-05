@@ -28,8 +28,7 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
     <h3>Consulta Pet</h3>
     <h4>Pesquise por uma palavra chave ou selecione o PET da lista</h4>
     <br>
-
-    <div style="margin: auto; max-width: 300px;" align="left">
+    <div style="margin: auto; max-width: 300px;" align="right">
         <table>
             <tr>
                 <td><input type="text" class="form-control" id="busca" name="busca"></td>
@@ -39,7 +38,6 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
             <tr>
         </table>
     </div>
-
     <div style="margin: auto; max-width: 800px;" class="table-responsive panel panel-default">
     <table width=100% class="table table-striped">
     <thead>

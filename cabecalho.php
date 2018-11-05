@@ -17,7 +17,7 @@ $id = $_SESSION['id'];
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
-        <script src="http://www.petline.com.br/js/valida_form.js?54"></script>
+        <script src="http://www.petline.com.br/js/valida_form.js?55"></script>
 
         <script src="http://www.petline.com.br/js/jquery.payment.js"></script>
 
@@ -49,8 +49,8 @@ $id = $_SESSION['id'];
 
                     <a href='#pageSubmenu' data-toggle='collapse' aria-expanded='false'>Históricos</a>
                     <ul class='collapse list-unstyled' id='pageSubmenu'>
-                      <li><a href='#'>Histórico Passeador</a></li>
-                      <li><a href='#'>Histórico Cliente</a></li>          
+                      <li><a href='http://www.petline.com.br/historico.php'>Histórico Passeador</a></li>
+                      <li><a href='http://www.petline.com.br/historico.php'>Histórico Cliente</a></li>          
                     </ul>
                   </li>
                   <li>
@@ -70,7 +70,7 @@ $id = $_SESSION['id'];
                     <a href='http://www.petline.com.br/cadastro_agenda.php'>Agenda</a>
                   </li>
                   <li>
-                    <a href='#'>Histórico  Passeador</a>
+                    <a href='http://www.petline.com.br/historico.php'>Histórico  Passeador</a>
                   </li>";
                   break;
 
@@ -83,7 +83,7 @@ $id = $_SESSION['id'];
                         <a href='http://www.petline.com.br/contrata_pacote.php'>Contratar Pacote</a>
                       </li>
                       <li>
-                        <a href='#'>Histórico  Cliente</a>
+                        <a href='http://www.petline.com.br/historico.php'>Histórico  Cliente</a>
                       </li>
                     ";
                     break;

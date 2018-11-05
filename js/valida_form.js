@@ -216,7 +216,7 @@ $ (document).ready(function(){
         }
     })
 
-    $("#lista_passeador").click(function(){
+    $("#lista_pet").click(function(){
 
         var total = $("#quantidade").val();
         var pacote = $("#pacote_opcao").val();
