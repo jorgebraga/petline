@@ -69,8 +69,10 @@
             <div class="col-sm-3 col-md-6" id="conttext"> <!--Arrumar-->
                 <h1 align="center">Sobre</h1>            
                 <div align="left">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor libero id vestibulum feugiat. Duis sodales dolor ac lorem malesuada porttitor. Integer at tristique augue, et fermentum tellus. Quisque scelerisque porta dolor sit amet viverra. Nam tempor vehicula turpis, nec egestas tellus tristique in. Nunc ut commodo arcu. Vivamus enim elit, aliquam vitae dui vel, commodo pulvinar felis. Cras bibendum velit sed felis convallis, eu tincidunt sapien auctor. In malesuada tempus aliquet. Curabitur bibendum, ante at mollis porttitor, massa quam laoreet erat, ac feugiat est risus quis felis. Morbi non magna tellus. Ut non dictum nibh. Pellentesque vitae tellus at purus commodo eleifend ac at libero. Donec a cursus mi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor libero id vestibulum feugiat. Duis sodales dolor ac lorem malesuada porttitor. Integer at tristique augue, et fermentum tellus. Quisque scelerisque porta dolor sit amet viverra. Nam tempor vehicula turpis, nec egestas tellus tristique in. Nunc ut commodo arcu. Vivamus enim elit, aliquam vitae dui vel, commodo pulvinar felis. Cras bibendum velit sed felis convallis, eu tincidunt sapien auctor. In malesuada tempus aliquet. Curabitur bibendum, ante at mollis porttitor, massa quam laoreet erat, ac feugiat est risus quis felis. Morbi non magna tellus. Ut non dictum nibh. Pellentesque vitae tellus at purus commodo eleifend ac at libero. Donec a cursus mi.</p>
+                    <p>Fundada em 2018, a PETLINE é uma empresa criada por alunos do curso de bacharel em Sistemas de Informação da unidade de Águas Claras - DF.</p>
+                    <p>A PetLine proporciona aos seus clientes um serviço seguro e confiável. Além de ser inovador, possui uma proposta tecnológica avançada na prestação de serviços de passeios para pet. Com a utilização desta plataforma, seus pets terão outra qualidade de vida, com mais saúde e bem-estar.</p>
+                    <p>Os profissionais parceiros da PetLine são excelentes e atuam de forma a agregar valor para os seus clientes.</p>
+                    <p>Não deixe de aproveitar esse serviço incrível que a PetLine pode proporcionar.</p>
                 </div><br>            
             </div>
             <div>
@@ -101,25 +103,25 @@
             <div class="carousel-inner">
       
                 <div class="item active">
-                    <img src="img/Pacote Line Basic.jpg" alt="Los Angeles" style="width:100%;">
+                    <img src="img/pack-line-basic.jpg" alt="Los Angeles" style="width:100%;">
                     <div class="carousel-caption">
-                        <h3>Line Basic</h3>
+                        <h3></h3>
                         <p>Pacote basico PetLine</p>
                     </div>
                 </div>
         
                 <div class="item">
-                    <img src="img/Pacote Line Basic.jpg" alt="Chicago" style="width:100%;">
+                    <img src="img/pack-rich-dog.jpg" alt="Chicago" style="width:100%;">
                     <div class="carousel-caption">
-                        <h3>Rich Dog</h3>
-                        <p>Pacote PetLine</p>
+                        <h3></h3>
+                        <p>Pacote Intermediário PetLine</p>
                     </div>
                 </div>
             
                 <div class="item">
-                    <img src="img/Pacote Line Basic.jpg" alt="New York" style="width:100%;">
+                    <img src="img/pack-golden-dog.jpg" alt="New York" style="width:100%;">
                     <div class="carousel-caption">
-                        <h3>Golden Dog</h3>
+                        <h3></h3>
                         <p>Pacote Premiun PetLine</p>
                     </div>
                 </div>            
@@ -148,10 +150,8 @@
                 </h4>
                 </div>
                 <div id="collapse1" class="panel-collapse collapse in">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
+                    <div class="panel-body">Este pacote dispõe de 8 (oito) passeios para pets e devem ser utilizados durante o mês de compra do mesmo. Trata-se do pacote mais básico disponibilizado pela PetLine, excelente escolha para clientes que utilizam o serviço em torno de uma vez por semana.
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -162,10 +162,7 @@
                 </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
+                <div class="panel-body">Este pacote dispõe de 12 (doze) passeios para pets e devem ser utilizados durante o mês de compra do mesmo. Trata-se do pacote intermediário da PetLine, perfeito para usuários que utilizam os passeios de uma a duas vezes por semana.</div>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -176,17 +173,14 @@
                 </h4>
                 </div>
                 <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
+                <div class="panel-body">Este pacote dispõe de 22 (vinte e dois) passeios para pets e devem ser utilizados durante o mês de compra do mesmo. Trata-se do pacote mais completo da PetLine, para clientes que não possuem tempo para passear com os seus pets, esta opção é perfeita. </div>
                 </div>
             </div>
         </div>
     <!-- FIM Seção do accordion -->
     <div align="center">
         <h2>Se interessou por algum destes pacotes de passeios, cadastre em nosso site e adquira o seu!</h2>        
-        <a href="cadastro_usuario.php?cod"><button type="button" class="btn btn-primary btn-block"> Cadastre Aqui</button></a>
+        <a href="cadastro_usuario.php?cod"><button type="button" class="btn btn-primary btn-block"> Cadastre-se</button></a>
     </div>
 </section>
     <!--Fim Seção Pacotes-->
