@@ -13,8 +13,6 @@ if (isset($_GET['add'])) {
 
     $sqlAdicionaDia = "INSERT INTO agenda (dt_passeio, hora_inicio, hora_fim, id_usuario, descricao, ativo) VALUES ('$dt_passeio', '$hora_inicio', '$hora_fim', $id, '$descricao', 1)";
     $resultadoAdicionaDia = mysqli_query($conn, $sqlAdicionaDia);
-
-
 }
 ?>
 <div id="conteudo">
@@ -49,11 +47,29 @@ if (isset($_GET['add'])) {
                     <label for="add">Adicionar</label> <br>
                     <button type="submit" class="btn btn-success glyphicon glyphicon-plus"></button>
                 </div> <br>
-                <?php
-                    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda WHERE id_usuario = $id";
-                    $resultadoConsultaDia = mysqli_query($conn,$sqlConsultaDia);
-                    $contadorConsultaDia = mysqli_num_rows($resultadoConsultaDia);
-                ?>
+<?php
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+
+if ($id == 1) {
+    $sqlConsultaDias = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda";
+}else{
+    $sqlConsultaDias = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda WHERE id_usuario = $id";
+}
+    $resultadoConsultaDias = mysqli_query($conn,$sqlConsultaDias);
+    $contadorConsultaDias = mysqli_num_rows($resultadoConsultaDias);
+
+$quantidade_pg = 6;
+$num_pagina = ceil($contadorConsultaDias/$quantidade_pg);
+$incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+if ($id == 1) {
+    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda";
+}else{
+    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda WHERE id_usuario = $id";
+}
+    $resultadoConsultaDia = mysqli_query($conn,$sqlConsultaDia);
+    $contadorConsultaDia = mysqli_num_rows($resultadoConsultaDia);
+?>
                 <div class="table-responsive panel panel-default col-md-12">
                 <table width=100% class="table table-striped">
                     <thead>
@@ -69,7 +85,7 @@ if (isset($_GET['add'])) {
                     <?php 
                         if ($contadorConsultaDia > 0) {
 
-                            while ($linhaConsultaDia = $resultadoConsultaDia -> fetch_array(MYSQLI_ASSOC)) {
+                            while ($linhaConsultaDia = mysqli_fetch_assoc($resultadoConsultaDia)) {
                                 $dt_passeio = $linhaConsultaDia['dt_passeio'];
                                 $hora_inicio = $linhaConsultaDia['hora_inicio'];
                                 $hora_fim = $linhaConsultaDia['hora_fim'];
@@ -91,6 +107,40 @@ if (isset($_GET['add'])) {
                     ?>
                 </table>
                 </div>
+                <?php
+                    //Verificar a pagina anterior e posterior
+                    $pagina_anterior = $pagina - 1;
+                    $pagina_posterior = $pagina + 1;
+                ?>
+                <nav class="text-center">
+                    <ul class="pagination">
+                        <li>
+                            <?php
+                            if($pagina_anterior != 0){ ?>
+                                <a href="http://www.petline.com.br/cadastro_agenda.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            <?php }else{ ?>
+                                <span aria-hidden="true">&laquo;</span>
+                        <?php }  ?>
+                        </li>
+                        <?php 
+                        //Apresentar a paginacao
+                        for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                            <li><a href="http://www.petline.com.br/cadastro_agenda.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php } ?>
+                        <li>
+                            <?php
+                            if($pagina_posterior <= $num_pagina){ ?>
+                                <a href="http://www.petline.com.br/cadastro_agenda.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            <?php }else{ ?>
+                                <span aria-hidden="true">&raquo;</span>
+                        <?php }  ?>
+                        </li>
+                    </ul>
+                </nav>
 
                 <div class="col-md-6" align="left">
                     <a href="http://www.petline.com.br/index.php" class="btn btn-primary">Voltar</a>

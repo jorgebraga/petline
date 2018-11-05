@@ -6,7 +6,7 @@ $sqlConsultaUsuarios = "SELECT id, CONCAT(nome, ' ', sobrenome) AS nome, login, 
 $resultadoConsultaUsuarios = mysqli_query($conn,$sqlConsultaUsuarios);
 $contadorConsultaUsuarios = mysqli_num_rows($resultadoConsultaUsuarios);
 
-$quantidade_pg = 5;
+$quantidade_pg = 10;
 
 $num_pagina = ceil($contadorConsultaUsuarios/$quantidade_pg);
 

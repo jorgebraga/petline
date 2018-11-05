@@ -1,14 +1,26 @@
 <?php
 include "../cabecalho.php";
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
 $id = $_SESSION['id'];
 
 if ($id == 1) {
-    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id";
+    $sqlConsultaPets = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id";
 }else{
-    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id WHERE P.id_usuario = $id";
+    $sqlConsultaPets = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id WHERE P.id_usuario = $id";
 }
+$resultadoConsultaPets = mysqli_query($conn,$sqlConsultaPets);
+$contadorConsultaPets = mysqli_num_rows($resultadoConsultaPets);
 
+$quantidade_pg = 10;
+$num_pagina = ceil($contadorConsultaPets/$quantidade_pg);
+$incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+if ($id == 1) {
+    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id LIMIT $incio, $quantidade_pg";
+}else{
+    $sqlConsultaPet = "SELECT P.id, P.nome, P.raca, P.peso, P.cor, P.dt_nascimento, P.descricao, CONCAT(U.nome, ' ', U.sobrenome) as dono, P.ativo FROM pet P INNER JOIN usuario U ON P.id_usuario = U.id WHERE P.id_usuario = $id LIMIT $incio, $quantidade_pg";
+}
 $resultadoConsultaPet = mysqli_query($conn,$sqlConsultaPet);
 $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
 ?>
@@ -40,7 +52,7 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
     </thead>
         <?php
             if ($contadorConsultaPet > 0) {
-                while ($linhaPet = $resultadoConsultaPet -> fetch_array(MYSQLI_ASSOC)) {
+                while ($linhaPet = mysqli_fetch_assoc($resultadoConsultaPet)) {
                     $nome = $linhaPet['nome'];
                     $raca = $linhaPet['raca'];
                     $id = $linhaPet['id'];
@@ -71,6 +83,40 @@ $contadorConsultaPet = mysqli_num_rows($resultadoConsultaPet);
         <h4>Para adicionar um novo PET <a href="http://www.petline.com.br/cadastro_pet.php">Clique Aqui</a></h4>
     </div>
     </div>
+    <?php
+        //Verificar a pagina anterior e posterior
+        $pagina_anterior = $pagina - 1;
+        $pagina_posterior = $pagina + 1;
+    ?>
+    <nav class="text-center">
+        <ul class="pagination">
+            <li>
+                <?php
+                if($pagina_anterior != 0){ ?>
+                    <a href="http://www.petline.com.br/consulta/consulta_pet.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&laquo;</span>
+            <?php }  ?>
+            </li>
+            <?php 
+            //Apresentar a paginacao
+            for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                <li><a href="http://www.petline.com.br/consulta/consulta_pet.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php } ?>
+            <li>
+                <?php
+                if($pagina_posterior <= $num_pagina){ ?>
+                    <a href="http://www.petline.com.br/consulta/consulta_pet.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&raquo;</span>
+            <?php }  ?>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <?php

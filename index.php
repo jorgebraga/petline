@@ -4,8 +4,9 @@ $perfil = $_SESSION['perfil'];
 $id = $_SESSION['id'];
 
 if ($perfil == 'pas') {
+    $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
     
-    $sqlIndexPasseador = "SELECT DISTINCT
+    $sqlIndexPasseadores = "SELECT DISTINCT
     CONCAT(U1.nome,' ',U1.sobrenome) as cliente_passeio,
     P.dt_passeio,
     P.hora_inicio,
@@ -22,6 +23,31 @@ if ($perfil == 'pas') {
     U.id = $id
     AND PE.ativo = 1
     AND P.ativo = 1";
+    $resultadoSqlIndexPasseadores = mysqli_query($conn,$sqlIndexPasseadores);
+    $contadorIndexPasseadores = mysqli_num_rows($resultadoSqlIndexPasseadores);
+
+    $quantidade_pg = 10;
+    $num_pagina = ceil($contadorIndexPasseadores/$quantidade_pg);
+    $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+    $sqlIndexPasseador = "SELECT DISTINCT
+    CONCAT(U1.nome,' ',U1.sobrenome) as cliente_passeio,
+    P.dt_passeio,
+    P.hora_inicio,
+	P.hora_fim,
+    PE.nome as nome_pet,
+    P.ativo as passeio_realizado,
+    P.id as id_pacote
+    FROM servico S
+    INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+    INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+    INNER JOIN pacote P ON (P.id_usuario = U1.id)
+    INNER JOIN pet PE ON (PE.id = S.id_pet)
+    WHERE
+    U.id = $id
+    AND PE.ativo = 1
+    AND P.ativo = 1
+    LIMIT $incio, $quantidade_pg";
     $resultadoSqlIndexPasseador = mysqli_query($conn,$sqlIndexPasseador);
     $contadorIndexPasseador = mysqli_num_rows($resultadoSqlIndexPasseador);
 ?>
@@ -46,7 +72,7 @@ if ($perfil == 'pas') {
                 <tbody>
             <?php
                 if ($contadorIndexPasseador > 0) {
-                    while ($linhaIndexPasseador = $resultadoSqlIndexPasseador -> fetch_array(MYSQLI_ASSOC)) {
+                    while ($linhaIndexPasseador = mysqli_fetch_assoc($resultadoSqlIndexPasseador)) {
                         $id_pacote = $linhaIndexPasseador['id_pacote'];
                         $cliente_passeio = $linhaIndexPasseador['cliente_passeio'];
                         $dt_passeio = $linhaIndexPasseador['dt_passeio'];
@@ -70,6 +96,40 @@ if ($perfil == 'pas') {
             </tbody>
             </table>
         </div>
+        <?php
+            //Verificar a pagina anterior e posterior
+            $pagina_anterior = $pagina - 1;
+            $pagina_posterior = $pagina + 1;
+        ?>
+        <nav class="text-center">
+            <ul class="pagination">
+                <li>
+                    <?php
+                    if($pagina_anterior != 0){ ?>
+                        <a href="index.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    <?php }else{ ?>
+                        <span aria-hidden="true">&laquo;</span>
+                <?php }  ?>
+                </li>
+                <?php 
+                //Apresentar a paginacao
+                for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                    <li><a href="index.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                <?php } ?>
+                <li>
+                    <?php
+                    if($pagina_posterior <= $num_pagina){ ?>
+                        <a href="index.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    <?php }else{ ?>
+                        <span aria-hidden="true">&raquo;</span>
+                <?php }  ?>
+                </li>
+            </ul>
+        </nav>
     </div>
 
     <div class="col-md-6" align="left">
@@ -77,24 +137,50 @@ if ($perfil == 'pas') {
     </div>
 </div>
 <?php }else if ($perfil == 'cli'){
+    $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-        $sqlIndexCliente = "SELECT DISTINCT
-        CONCAT(U.nome,' ',U.sobrenome) as passeador,
-        P.dt_passeio,
-        P.hora_inicio,
-        P.hora_fim,
-        PE.nome as nome_pet,
-        P.ativo as passeio_realizado,
-        P.id as id_pacote
-        FROM servico S
-        INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
-        INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
-        INNER JOIN pacote P ON (P.id_usuario = U1.id)
-        INNER JOIN pet PE ON (PE.id = S.id_pet)
-        WHERE
-        U1.id = $id
-        AND PE.ativo = 1
-        AND P.ativo = 1";
+    $sqlIndexClientes = "SELECT DISTINCT
+    CONCAT(U.nome,' ',U.sobrenome) as passeador,
+    P.dt_passeio,
+    P.hora_inicio,
+    P.hora_fim,
+    PE.nome as nome_pet,
+    P.ativo as passeio_realizado,
+    P.id as id_pacote
+    FROM servico S
+    INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+    INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+    INNER JOIN pacote P ON (P.id_usuario = U1.id)
+    INNER JOIN pet PE ON (PE.id = S.id_pet)
+    WHERE
+    U1.id = $id
+    AND PE.ativo = 1
+    AND P.ativo = 1";
+    $resultadoSqlIndexClientes = mysqli_query($conn,$sqlIndexClientes);
+    $contadorIndexClientes = mysqli_num_rows($resultadoSqlIndexClientes);
+
+    $quantidade_pg = 10;
+    $num_pagina = ceil($contadorIndexClientes/$quantidade_pg);
+    $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+    $sqlIndexCliente = "SELECT DISTINCT
+    CONCAT(U.nome,' ',U.sobrenome) as passeador,
+    P.dt_passeio,
+    P.hora_inicio,
+    P.hora_fim,
+    PE.nome as nome_pet,
+    P.ativo as passeio_realizado,
+    P.id as id_pacote
+    FROM servico S
+    INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+    INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+    INNER JOIN pacote P ON (P.id_usuario = U1.id)
+    INNER JOIN pet PE ON (PE.id = S.id_pet)
+    WHERE
+    U1.id = $id
+    AND PE.ativo = 1
+    AND P.ativo = 1
+    LIMIT $incio, $quantidade_pg";
     $resultadoSqlIndexCliente = mysqli_query($conn,$sqlIndexCliente);
     $contadorIndexCliente = mysqli_num_rows($resultadoSqlIndexCliente);
     ?>
@@ -118,7 +204,7 @@ if ($perfil == 'pas') {
                     <tbody>
                 <?php
                     if ($contadorIndexCliente > 0) {
-                        while ($linhaIndexCliente = $resultadoSqlIndexCliente -> fetch_array(MYSQLI_ASSOC)) {
+                        while ($linhaIndexCliente = mysqli_fetch_assoc($resultadoSqlIndexCliente)) {
                             $passeador = $linhaIndexCliente['passeador'];
                             $dt_passeio = $linhaIndexCliente['dt_passeio'];
                             $hora_inicio = $linhaIndexCliente['hora_inicio'];
@@ -141,26 +227,86 @@ if ($perfil == 'pas') {
                 </table>
             </div>
         </div>
+        <?php
+            //Verificar a pagina anterior e posterior
+            $pagina_anterior = $pagina - 1;
+            $pagina_posterior = $pagina + 1;
+        ?>
+        <nav class="text-center">
+            <ul class="pagination">
+                <li>
+                    <?php
+                    if($pagina_anterior != 0){ ?>
+                        <a href="index.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    <?php }else{ ?>
+                        <span aria-hidden="true">&laquo;</span>
+                <?php }  ?>
+                </li>
+                <?php 
+                //Apresentar a paginacao
+                for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                    <li><a href="index.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                <?php } ?>
+                <li>
+                    <?php
+                    if($pagina_posterior <= $num_pagina){ ?>
+                        <a href="index.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    <?php }else{ ?>
+                        <span aria-hidden="true">&raquo;</span>
+                <?php }  ?>
+                </li>
+            </ul>
+        </nav>
     </div>
 <?php }else{
+    $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-        $sqlIndexAdm = "SELECT DISTINCT
-        CONCAT(U.nome,' ',U.sobrenome) as passeador,
-        CONCAT(U1.nome,' ',U1.sobrenome) as cliente,
-        P.dt_passeio,
-        P.hora_inicio,
-        P.hora_fim,
-        PE.nome as nome_pet,
-        P.ativo as passeio_realizado,
-        P.id as id_pacote
-        FROM servico S
-        INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
-        INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
-        INNER JOIN pacote P ON (P.id_usuario = U1.id)
-        INNER JOIN pet PE ON (PE.id = S.id_pet)
-        WHERE
-        PE.ativo = 1
-        AND P.ativo = 1";
+    $sqlIndexAdms = "SELECT DISTINCT
+    CONCAT(U.nome,' ',U.sobrenome) as passeador,
+    CONCAT(U1.nome,' ',U1.sobrenome) as cliente,
+    P.dt_passeio,
+    P.hora_inicio,
+    P.hora_fim,
+    PE.nome as nome_pet,
+    P.ativo as passeio_realizado,
+    P.id as id_pacote
+    FROM servico S
+    INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+    INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+    INNER JOIN pacote P ON (P.id_usuario = U1.id)
+    INNER JOIN pet PE ON (PE.id = S.id_pet)
+    WHERE
+    PE.ativo = 1
+    AND P.ativo = 1";
+    $resultadoSqlIndexAdms = mysqli_query($conn,$sqlIndexAdms);
+    $contadorIndexAdms = mysqli_num_rows($resultadoSqlIndexAdms);
+
+    $quantidade_pg = 10;
+    $num_pagina = ceil($contadorIndexAdms/$quantidade_pg);
+    $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+    $sqlIndexAdm = "SELECT DISTINCT
+    CONCAT(U.nome,' ',U.sobrenome) as passeador,
+    CONCAT(U1.nome,' ',U1.sobrenome) as cliente,
+    P.dt_passeio,
+    P.hora_inicio,
+    P.hora_fim,
+    PE.nome as nome_pet,
+    P.ativo as passeio_realizado,
+    P.id as id_pacote
+    FROM servico S
+    INNER JOIN usuario U ON (S.id_passeador = U.id AND U.perfil = 'pas')
+    INNER JOIN usuario U1 ON (S.id_cliente = U1.id AND U1.perfil = 'cli')
+    INNER JOIN pacote P ON (P.id_usuario = U1.id)
+    INNER JOIN pet PE ON (PE.id = S.id_pet)
+    WHERE
+    PE.ativo = 1
+    AND P.ativo = 1
+    LIMIT $incio, $quantidade_pg";
     $resultadoSqlIndexAdm = mysqli_query($conn,$sqlIndexAdm);
     $contadorIndexAdm = mysqli_num_rows($resultadoSqlIndexAdm);
     ?>
@@ -185,7 +331,7 @@ if ($perfil == 'pas') {
                     <tbody>
                 <?php
                     if ($contadorIndexAdm > 0) {
-                        while ($linhaIndexAdm = $resultadoSqlIndexAdm -> fetch_array(MYSQLI_ASSOC)) {
+                        while ($linhaIndexAdm = mysqli_fetch_assoc($resultadoSqlIndexAdm)) {
                             $passeador = $linhaIndexAdm['passeador'];
                             $cliente = $linhaIndexAdm['cliente'];
                             $nome_pet = $linhaIndexAdm['nome_pet'];
@@ -211,6 +357,40 @@ if ($perfil == 'pas') {
             </div>
         </div>
     </div>
+    <?php
+        //Verificar a pagina anterior e posterior
+        $pagina_anterior = $pagina - 1;
+        $pagina_posterior = $pagina + 1;
+    ?>
+    <nav class="text-center">
+        <ul class="pagination">
+            <li>
+                <?php
+                if($pagina_anterior != 0){ ?>
+                    <a href="index.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&laquo;</span>
+            <?php }  ?>
+            </li>
+            <?php 
+            //Apresentar a paginacao
+            for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                <li><a href="index.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php } ?>
+            <li>
+                <?php
+                if($pagina_posterior <= $num_pagina){ ?>
+                    <a href="index.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                <?php }else{ ?>
+                    <span aria-hidden="true">&raquo;</span>
+            <?php }  ?>
+            </li>
+        </ul>
+    </nav>
 <?php } ?>
 
 <?php
