@@ -66,7 +66,6 @@ if ($perfil == 'pas') {
                     <th scope="col">Inicio</th>
                     <th scope="col">Termino</th>
                     <th scope="col">Nome Pet</th>
-                    <th scope="col">Passeio Realizado?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,12 +84,11 @@ if ($perfil == 'pas') {
                             <td width=10%>$dt_passeio</td>
                             <td width=10%>$hora_inicio</td>
                             <td width=10%>$hora_fim</td>
-                            <td width=10%>$nome_pet</td>";?>
-                            <td width=10% align=center><a href="#" onclick="if(confirm('Tem certeza que deseja finalizar esse passeio?')) <?php echo "window.location.href = 'http://www.petline.com.br/finaliza_passeio.php?id=$id_pacote';" ?> ; return false" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a></td>
-                            <?php echo "</tr>";
+                            <td width=10%>$nome_pet</td>
+                            </tr>";
                     }
                 }else{
-                    echo "<h4>Não existem PETs cadastrados</h4>";
+                    echo "<h4>Não existem passeios disponíveis</h4>";
                 }
             ?>                 
             </tbody>
@@ -216,7 +214,7 @@ if ($perfil == 'pas') {
                                 </tr>";
                         }
                     }else{
-                        echo "<h4>Não existem passeios a serem realizados</h4>";
+                        echo "<h4>Não existem passeios disponíveis</h4>";
                     }
                 ?>                 
                 </tbody>
@@ -345,7 +343,7 @@ if ($perfil == 'pas') {
                                 </tr>";
                         }
                     }else{
-                        echo "<h4>Não existem passeios a serem realizados</h4>";
+                        echo "<h4>Não existem passeios disponíveis</h4>";
                     }
                 ?>                 
                 </tbody>
