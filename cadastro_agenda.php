@@ -58,14 +58,14 @@ if ($id == 1) {
     $resultadoConsultaDias = mysqli_query($conn,$sqlConsultaDias);
     $contadorConsultaDias = mysqli_num_rows($resultadoConsultaDias);
 
-$quantidade_pg = 6;
+$quantidade_pg = 10;
 $num_pagina = ceil($contadorConsultaDias/$quantidade_pg);
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
 if ($id == 1) {
-    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda";
+    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda LIMIT $incio, $quantidade_pg";
 }else{
-    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda WHERE id_usuario = $id";
+    $sqlConsultaDia = "SELECT id, dt_passeio, hora_inicio, hora_fim, descricao FROM agenda WHERE id_usuario = $id LIMIT $incio, $quantidade_pg";
 }
     $resultadoConsultaDia = mysqli_query($conn,$sqlConsultaDia);
     $contadorConsultaDia = mysqli_num_rows($resultadoConsultaDia);
